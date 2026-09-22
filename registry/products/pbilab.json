@@ -1,0 +1,52 @@
+{
+  "id": "pbilab",
+  "name": "PBI / Semantic Lab",
+  "canonical_repo": null,
+  "donors": [
+    "julian-passebecq/powerbi_enhanced_dev",
+    "julian-passebecq/TabularEditor_J"
+  ],
+  "external_references": [
+    "DaxStudio/DaxStudio",
+    "sql-bi/Bravo",
+    "daxformatter.com"
+  ],
+  "purpose": "Semantic-model and DAX learning.",
+  "current_state": "Focused product not yet separated; substantial PbiBench/TE2 donor work exists.",
+  "target_scope": [
+    "semantic model diagram",
+    "relationships/cardinality/filter direction",
+    "model tree/properties",
+    "DAX editor/query/results",
+    "DAX formatting",
+    "BPA/model health",
+    "measure lineage",
+    "exercises",
+    "light proof visuals",
+    "real TOM/ADOMD connected mode"
+  ],
+  "features": [
+    [
+      "TE2 model engine donor",
+      "implemented_donor"
+    ],
+    [
+      "PbiBench donor",
+      "implemented_donor"
+    ],
+    [
+      "focused standalone PBI Lab",
+      "planned"
+    ],
+    [
+      "React Flow model view",
+      "planned"
+    ],
+    [
+      "real connected DAX execution",
+      "planned"
+    ]
+  ],
+  "last_reviewed": "2026-09-22",
+  "next_action": "Choose canonical repo and extract a smaller learning product instead of expanding another giant IDE."
+}
