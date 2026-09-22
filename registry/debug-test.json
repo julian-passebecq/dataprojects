@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-22",
+  "entries": [
+    {
+      "project": "Datapass",
+      "repo": "julian-passebecq/ducklabms_code",
+      "status": "green_qualified",
+      "last_checkpoint": "2026-09-22",
+      "evidence": [
+        "Monaco regression 1 passed",
+        "browser 14 passed / 1 skipped",
+        "V1 DuckLake browser 5 passed",
+        "typecheck/build passed",
+        "pytest 304 passed / 4 skipped"
+      ],
+      "open_debug": "none known after PR #8"
+    },
+    {
+      "project": "fastapi-fabric",
+      "repo": "julian-passebecq/fastapi-fabric",
+      "status": "prototype_tests_green_at_last_conversation",
+      "last_checkpoint": "2026-09-21",
+      "evidence": [
+        "4 tests passed in V0.1 scaffold"
+      ],
+      "open_debug": "real executors/persistence/monitoring not yet built; current execution is simulation"
+    },
+    {
+      "project": "Fabric DataPass Toolbox",
+      "repo": "julian-passebecq/fabricdatapasstoolbox",
+      "status": "ci_green_on_active_branch_at_last_conversation",
+      "last_checkpoint": "2026-09-22",
+      "evidence": [
+        "typecheck/build/VSIX packaging reported green"
+      ],
+      "open_debug": "unit tests for progress/checklist behavior were next"
+    },
+    {
+      "project": "Fabric Ops Studio",
+      "repo": "julian-passebecq/fabric-toolbox_J",
+      "status": "active_branch_stack_needs_reaudit",
+      "last_checkpoint": "2026-09-22",
+      "evidence": [
+        "earlier M00/M01 CI green; later Eventstream/reconciliation/deployment branches exist"
+      ],
+      "open_debug": "need branch/PR consolidation and latest CI truth"
+    },
+    {
+      "project": "Contoso Data Studio",
+      "repo": "julian-passebecq/contoso-data-studio",
+      "status": "active_branch_needs_release_gate_capture",
+      "last_checkpoint": "2026-09-22",
+      "evidence": [
+        "branch README documents working generator/DuckLake/dbt/charts/UI"
+      ],
+      "open_debug": "capture current automated test/build matrix before merge"
+    },
+    {
+      "project": "fastapispark",
+      "repo": "julian-passebecq/fastapispark",
+      "status": "active_experimental_verification_branch",
+      "last_checkpoint": "2026-09-22",
+      "evidence": [
+        "branch adds real Spark 4.2 local[4] GitHub Actions verification"
+      ],
+      "open_debug": "qualify security/artifact/runner path and decide merge"
+    },
+    {
+      "project": "FOIL Databricks DAB",
+      "repo": "julian-passebecq/foil_databrick_dab",
+      "status": "main_live_test_ready_not_live_proven",
+      "last_checkpoint": "2026-09-22",
+      "evidence": [
+        "README explicitly says first live Databricks execution still required"
+      ],
+      "open_debug": "live workspace proof + branch reconciliation"
+    },
+    {
+      "project": "Airflow Lab",
+      "repo": "julian-passebecq/datapass-airflow-runner",
+      "status": "not_started",
+      "last_checkpoint": "2026-09-22",
+      "evidence": [
+        "repo empty"
+      ],
+      "open_debug": "architecture first, not debugging"
+    }
+  ]
+}
