@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-22",
+  "families": [
+    {
+      "id": "foil",
+      "name": "FOIL / Wind synthetic digital-twin lab",
+      "purpose": "Domain proof environment, not a general product family",
+      "repos": [
+        {
+          "repo": "julian-passebecq/foil_databrick_dab",
+          "role": "active Databricks DAB lab",
+          "state": "active"
+        },
+        {
+          "repo": "julian-passebecq/databricks-vscode-foil",
+          "role": "Databricks VS Code fork",
+          "state": "prototype"
+        },
+        {
+          "repo": "julian-passebecq/foil-ai-extension",
+          "role": "navigator/binder",
+          "state": "supporting"
+        },
+        {
+          "repo": "julian-passebecq/foil-control-v1",
+          "role": "control/export/schema tooling",
+          "state": "supporting"
+        },
+        {
+          "repo": "julian-passebecq/foildbv",
+          "role": "legacy donor",
+          "state": "legacy_donor"
+        }
+      ]
+    }
+  ]
+}
