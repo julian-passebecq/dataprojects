@@ -85,17 +85,34 @@
     "project_id": "6ab286d91f303b893784fc72",
     "cluster": "ClusterDP",
     "database": "dataprojects_control",
-    "status": "initialized",
+    "status": "initialized_and_expanding",
     "collections": {
-      "entities": 16,
-      "repositories": 28,
-      "work_items": 20,
-      "events": 14,
+      "entities": 17,
+      "repositories": 127,
+      "work_items": 25,
+      "events": 15,
       "relationships": 15,
-      "audit_runs": 1
+      "audit_runs": 2
     },
-    "total_documents": 94,
+    "total_documents": 201,
     "indexes": 17,
     "authority_rule": "MongoDB = granular operational/history layer; GitHub dataprojects JSON = summarized versioned architecture view."
+  },
+  "cartography_progress": {
+    "repository_records": 127,
+    "needs_content_audit": 72,
+    "newly_resolved_examples": [
+      "leetcodedataeng -> mature duplicate candidate for Datapass",
+      "datainterview -> mature duplicate/content-bank candidate",
+      "legacy Airflow repos -> exercise/reference donors",
+      "ProfitLossV1 -> semantic-model fixture donor",
+      "Building-OLAP-Dimensional-Model-using-BigQuery-and-DBT -> Contoso modeling/dbt reference"
+    ],
+    "next_focus": [
+      "remaining data-engineering reference repos",
+      "SQL content lineage across TeachSQL/upskill-sql/Formation/Datapass",
+      "Airflow exercise harvesting",
+      "PBI semantic-model fixture audit"
+    ]
   }
 }
