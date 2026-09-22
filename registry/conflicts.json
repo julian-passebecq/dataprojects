@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-22",
+  "conflicts": [
+    {
+      "id": "C001",
+      "severity": "critical",
+      "kind": "duplicate_product",
+      "entities": [
+        "ducklabms_code",
+        "leetcodedataeng"
+      ],
+      "summary": "Both target LeetCode-style data-engineering coding/interview practice.",
+      "resolution": "Datapass is canonical product. Audit leetcodedataeng's 323-item curriculum and migrate unique content/UX, then freeze or reclassify the repo."
+    },
+    {
+      "id": "C002",
+      "severity": "critical",
+      "kind": "duplicate_product",
+      "entities": [
+        "ducklabms_code",
+        "datainterview"
+      ],
+      "summary": "Datainterview is a broad Streamlit interview lab with SQL, Python, DAX, ADF, ZillaCode and company banks; significant overlap with Datapass/CaseLab/Airflow/Factory areas.",
+      "resolution": "Reclassify primarily as content/question donor unless a unique standalone role is proven."
+    },
+    {
+      "id": "C003",
+      "severity": "high",
+      "kind": "duplicate_product",
+      "entities": [
+        "ducklabms_code",
+        "deepnotejul"
+      ],
+      "summary": "Deepnote interview-training workspace has LeetCode/DE architecture branches and overlaps Datapass notebook/interview direction.",
+      "resolution": "Audit branch content and migrate unique notebook UX/content; do not grow both products."
+    },
+    {
+      "id": "C004",
+      "severity": "high",
+      "kind": "duplicate_shell",
+      "entities": [
+        "ducklabms_code",
+        "Fluent2_J_CodeLab"
+      ],
+      "summary": "CodeLab is a Datapass consumer with the same 323-item practice concept but no execution.",
+      "resolution": "Keep as consumer/test/donor or freeze; execution product remains Datapass."
+    },
+    {
+      "id": "C005",
+      "severity": "high",
+      "kind": "scope_collision",
+      "entities": [
+        "fabricdatapasstoolbox",
+        "fabric-toolbox_J",
+        "factorylab"
+      ],
+      "summary": "All are Fabric-related but have different intended jobs, making accidental duplicate implementation likely.",
+      "resolution": "Fabric DataPass Toolbox = VS Code companion; Fabric Ops = real environment provisioning/admin; FactoryLab = local learning simulator."
+    },
+    {
+      "id": "C006",
+      "severity": "high",
+      "kind": "scope_collision",
+      "entities": [
+        "powerbi_enhanced_dev",
+        "TabularEditor_J",
+        "pbilab"
+      ],
+      "summary": "PbiBench and TE2 fork can easily become a second/third semantic modeling product.",
+      "resolution": "Treat them as engineering tools/donors; PBI Lab is the focused learning product."
+    },
+    {
+      "id": "C007",
+      "severity": "high",
+      "kind": "repo_overlap",
+      "entities": [
+        "contoso-data-studio",
+        "Contoso-Data-Generator-V2",
+        "Contoso_Data_Fabric"
+      ],
+      "summary": "Three repos contain Contoso/data-platform concerns.",
+      "resolution": "Contoso Data Studio canonical; generator is supporting generator; deeply audit Contoso_Data_Fabric and mark donor/legacy if superseded."
+    }
+  ]
+}
