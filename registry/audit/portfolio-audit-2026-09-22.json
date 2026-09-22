@@ -1,0 +1,230 @@
+{
+  "schema_version": "1.0",
+  "audit_date": "2026-09-22",
+  "scope": "GitHub strategic repos plus recent Codex/ChatGPT project-development checkpoints available to the audit.",
+  "audit_truth": {
+    "implementation": "GitHub repo/branch/test evidence",
+    "conversation_context": "Recent Codex/ChatGPT project conversations available in the current project context",
+    "global_scope": "julian-passebecq/dataprojects",
+    "warning": "Inventory-only repositories are not classified as obsolete merely because they were not deeply reviewed in this pass."
+  },
+  "strategic_entities": [
+    {
+      "id": "datapass",
+      "repo": "julian-passebecq/ducklabms_code",
+      "role": "core_product",
+      "status": "qualified_frozen_refocus_planned",
+      "stopped_at": "2026-09-22",
+      "current_ref": "main",
+      "current_commit": "c1ebf0d982fbcb2d22564c2bc04ab290630cfba7",
+      "evidence": [
+        "PR #8 merged qualified DuckLake loading-state and Monaco source-sync fixes",
+        "browser 14 passed / 1 skipped; DuckLake browser 5 passed; pytest 304 passed / 4 skipped; build/typecheck passed"
+      ],
+      "next": "Do not continue broad V1 feature growth. Refocus toward Arena/notebook/interview coding after extracting donors needed by Contoso and FactoryLab.",
+      "risk": "high overlap with leetcodedataeng, datainterview, deepnotejul, Fluent2_J_CodeLab and curriculum consumers"
+    },
+    {
+      "id": "contoso",
+      "repo": "julian-passebecq/contoso-data-studio",
+      "role": "core_product",
+      "status": "active",
+      "stopped_at": "2026-09-22",
+      "active_branch": "feat/ducklake-foundation",
+      "branch_relation_to_main": "ahead by 179 commits at audit time",
+      "implemented_on_branch": [
+        "deterministic retail-baseline generator",
+        "Parquet staging",
+        "DuckLake catalog with Bronze/Silver/Gold",
+        "CSV/JSON/Parquet/XLSX Explorer",
+        "DuckDB SQL workbench",
+        "dbt-duckdb 1.11 build/test",
+        "starter Silver/Gold models",
+        "dbt Charts 0.8 validation and Executive Sales board",
+        "React/Fluent shell"
+      ],
+      "next": "Consolidate branch to canonical release path and reuse/migrate Datapass dbt/model/chart assets only where they add value.",
+      "risk": "possible overlap with Contoso-Data-Generator-V2 and Contoso_Data_Fabric unless ownership stays explicit"
+    },
+    {
+      "id": "factorylab",
+      "role": "core_product",
+      "repo": null,
+      "status": "assembly_not_started",
+      "stopped_at": "2026-09-22",
+      "donors": [
+        "julian-passebecq/ducklabms_code:migration-sources/fabric",
+        "julian-passebecq/fastapi-fabric"
+      ],
+      "external_foundation": "slothflowlabs/duckle",
+      "current_truth": [
+        "Fabric/ADF React Flow donor UI already exists",
+        "fastapi-fabric V0.1 exists with CRUD, graph validation, simulated runs/history/cancellation, parameters/variables and expressions",
+        "Duckle is the primary lower-layer candidate before any new general executor"
+      ],
+      "next": "Run Duckle adapter spike, then choose/create canonical FactoryLab repo and assemble existing UI + semantic adapter + Duckle."
+    },
+    {
+      "id": "fabric_companion",
+      "repo": "julian-passebecq/fabricdatapasstoolbox",
+      "role": "toolbox_extension",
+      "status": "active_prototype",
+      "stopped_at": "2026-09-22",
+      "active_branch": "codex/initial-vscode-companion",
+      "branch_relation_to_main": "ahead by 30 commits",
+      "current_release_claim": "README reports V0.5",
+      "implemented": [
+        "VS Code Activity Bar",
+        "project checklist and dependencies",
+        "fabric.project.json",
+        "resource links/capture",
+        "FABRIC_HANDOFF.md",
+        "React toolbox webview",
+        "Fabric/FabricStudio detection",
+        "security/assessment helpers",
+        "MCP status",
+        "CI build/VSIX"
+      ],
+      "next": "Finish unit/regression coverage and decide merge/release path.",
+      "risk": "must not be confused with FactoryLab or Fabric Ops Studio"
+    },
+    {
+      "id": "fabric_ops",
+      "repo": "julian-passebecq/fabric-toolbox_J",
+      "role": "toolbox_fork_ops",
+      "status": "active_multiple_branches",
+      "stopped_at": "2026-09-22",
+      "base_branch": "fabric-ops-studio-v1",
+      "active_or_recent_branches": [
+        "codex/foilo-eventstream-definition",
+        "codex/eventstream-definition-reconcile",
+        "codex/foilo-deployment-acceptance",
+        "codex/foilo-rti-provisioning-v1",
+        "codex/project-composer-foilo-rti"
+      ],
+      "observed_relation": [
+        "codex/foilo-deployment-acceptance ahead of main by 185 commits",
+        "codex/eventstream-definition-reconcile ahead of main by 170 commits"
+      ],
+      "conversation_checkpoint": "Earlier 2026-09-22 checkpoint had draft PR #10 on codex/foilo-eventstream-definition with Eventstream JSON generation; later branches indicate continued reconciliation/deployment acceptance work.",
+      "next": "Reconcile branch stack and establish a single current integration branch/PR; avoid starting equivalent Fabric provisioning work in fabricdatapasstoolbox."
+    },
+    {
+      "id": "pbibench",
+      "repo": "julian-passebecq/powerbi_enhanced_dev",
+      "role": "engineering_ide_donor",
+      "status": "active_donor",
+      "stopped_at": "2026-09-22 audit",
+      "latest_known_commit": "d75b7ab9df5bd5289a205390111237481cb4e84e",
+      "latest_title": "v2-pass3 - Unified shell, design exchange and external-tools boundary",
+      "purpose": "Broad Windows-first Power BI/Fabric engineering IDE with TE2-derived model engine and DAX Studio bridge.",
+      "next": "Do not grow as a second competing learning app; extract focused PBI/Semantic Lab capabilities from it."
+    },
+    {
+      "id": "tabular_editor_j",
+      "repo": "julian-passebecq/TabularEditor_J",
+      "role": "fork_donor",
+      "status": "donor_with_unmerged_branch",
+      "stopped_at": "2026-09-22 audit",
+      "branch": "pbi-workflow-pro-v0.2",
+      "branch_relation_to_master": "ahead by 10 commits",
+      "next": "Treat as semantic-model engine/source donor; avoid parallel product roadmap with PbiBench and PBI Lab."
+    },
+    {
+      "id": "fastapispark",
+      "repo": "julian-passebecq/fastapispark",
+      "role": "runtime_service",
+      "status": "implemented_active_branch",
+      "stopped_at": "2026-09-22 audit",
+      "main_latest": "80ebbbcaf58b1d1922d014a83c9aab49943a81e1",
+      "active_branch": "codex/real-spark-github-actions-1",
+      "branch_relation_to_main": "ahead by 26 commits",
+      "current_truth": "Fake Spark/DuckDB runtime plus optional genuine Spark 4.2 local[4] GitHub Actions verification; not distributed Spark.",
+      "next": "Decide merge/release of real-Spark verification branch and keep service reusable by Datapass/CaseLab."
+    },
+    {
+      "id": "airflow_runtime",
+      "repo": "julian-passebecq/datapass-airflow-runner",
+      "role": "runtime_candidate",
+      "status": "empty_planned",
+      "stopped_at": "2026-09-22",
+      "next": "Do not build until Airflow Lab canonical repo and safe Airflow IR/fastapiflow contract are defined."
+    },
+    {
+      "id": "foil_databricks_lab",
+      "repo": "julian-passebecq/foil_databrick_dab",
+      "role": "domain_project",
+      "status": "active_main_with_stale_feature_branches",
+      "stopped_at": "2026-09-22 audit",
+      "main_latest": "24c821a43168b21cf903b6ee7f39d461eef7617a",
+      "feature_branch_state": [
+        "feat/bronze-silver-gold diverged: 4 ahead / 16 behind main",
+        "feat/synthetic-twin-foundation diverged: 1 ahead / 16 behind main"
+      ],
+      "next": "Reconcile or retire stale feature branches; main is documented as live-test-ready Wind baseline."
+    },
+    {
+      "id": "foil_databricks_extension",
+      "repo": "julian-passebecq/databricks-vscode-foil",
+      "role": "domain_extension_fork",
+      "status": "prototype_branch",
+      "stopped_at": "2026-09-22 audit",
+      "active_branch": "foil-lab-mvp",
+      "branch_relation_to_main": "ahead by 65 commits",
+      "risk": "main tracks upstream Databricks extension, so product-specific work must remain clearly isolated and periodically rebased."
+    }
+  ],
+  "overlap_clusters": [
+    {
+      "cluster": "interview_training",
+      "canonical_target": "Datapass + CaseLab",
+      "repos": [
+        "ducklabms_code",
+        "leetcodedataeng",
+        "datainterview",
+        "deepnotejul",
+        "Fluent2_J_CodeLab",
+        "Fluent2_J_Formation",
+        "sqldubr",
+        "Fluent2_J_CloudArchi"
+      ],
+      "severity": "critical",
+      "action": "Stop parallel product growth. Audit content/features and classify each non-canonical repo as donor, content source, frozen reference or explicit standalone exception."
+    },
+    {
+      "cluster": "powerbi_semantic",
+      "canonical_target": "PBI / Semantic Lab",
+      "repos": [
+        "powerbi_enhanced_dev",
+        "TabularEditor_J",
+        "reactdatamodel",
+        "sql_schema_visualizer"
+      ],
+      "severity": "high",
+      "action": "PbiBench and TabularEditor_J are donors/engineering tools. Do not build a second semantic-model product before extracting the focused PBI Lab."
+    },
+    {
+      "cluster": "fabric_tooling",
+      "canonical_target": "Three intentionally different lanes",
+      "repos": [
+        "fabricdatapasstoolbox",
+        "fabric-toolbox_J",
+        "fastapi-fabric",
+        "ducklabms_code:migration-sources/fabric"
+      ],
+      "severity": "high",
+      "action": "Keep lanes explicit: real Fabric VS Code companion; real Fabric Ops; FactoryLab learning simulator/backend. No cross-lane duplicate features without a deliberate reuse decision."
+    },
+    {
+      "cluster": "contoso",
+      "canonical_target": "Contoso Data Studio",
+      "repos": [
+        "contoso-data-studio",
+        "Contoso-Data-Generator-V2",
+        "Contoso_Data_Fabric"
+      ],
+      "severity": "high",
+      "action": "Generator stays supporting asset; Contoso Data Studio is canonical product; audit Contoso_Data_Fabric for donor vs obsolete overlap."
+    }
+  ]
+}
