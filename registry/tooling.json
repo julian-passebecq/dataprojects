@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-22",
+  "rule": "Supporting tools/forks/donors are not core products unless explicitly promoted.",
+  "items": [
+    {
+      "id": "fabricdatapasstoolbox",
+      "name": "Fabric DataPass Toolbox",
+      "repo": "julian-passebecq/fabricdatapasstoolbox",
+      "classification": "toolbox_vscode_companion",
+      "state": "prototype_branches",
+      "evidence": "main minimal; codex/initial-vscode-companion and codex/v0-vscode-toolbox branches exist",
+      "purpose": "Checklist/helpers for real Microsoft Fabric work",
+      "boundary": "not FactoryLab"
+    },
+    {
+      "id": "fabric_ops_studio",
+      "name": "Fabric Ops Studio / Fabric Toolbox J",
+      "repo": "julian-passebecq/fabric-toolbox_J",
+      "classification": "fork_ops_toolbox_donor",
+      "state": "active_experimental",
+      "evidence": "fabric-ops-studio-v1 plus provisioning/reliability branches",
+      "purpose": "Real Fabric ops/admin/accelerator work",
+      "boundary": "not FactoryLab learning product"
+    },
+    {
+      "id": "pbibench",
+      "name": "PbiBench",
+      "repo": "julian-passebecq/powerbi_enhanced_dev",
+      "classification": "engineering_ide_donor",
+      "state": "active_donor",
+      "purpose": "Broad Power BI/Fabric engineering IDE with TE2-derived model editing and DAX Studio bridge",
+      "boundary": "donor/broader engineering tool; focused PBI Lab is separate"
+    },
+    {
+      "id": "tabulareditor_j",
+      "name": "TabularEditor_J",
+      "repo": "julian-passebecq/TabularEditor_J",
+      "classification": "fork_donor",
+      "state": "donor",
+      "purpose": "TE2/TOM semantic-model source",
+      "boundary": "engine/source donor, not another core product"
+    },
+    {
+      "id": "databricks_vscode_foil",
+      "name": "FOIL Databricks VS Code fork",
+      "repo": "julian-passebecq/databricks-vscode-foil",
+      "classification": "domain_extension_fork",
+      "state": "prototype",
+      "evidence": "foil-lab-mvp branch exists",
+      "purpose": "FOIL-specific Databricks developer workflow",
+      "boundary": "not a general learning product"
+    },
+    {
+      "id": "foil_ai_extension",
+      "name": "FOIL AI Control Extension",
+      "repo": "julian-passebecq/foil-ai-extension",
+      "classification": "supporting_extension",
+      "state": "active_supporting",
+      "purpose": "small FOIL workspace navigator/binder",
+      "boundary": "not a second source of truth"
+    }
+  ]
+}
