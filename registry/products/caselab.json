@@ -1,0 +1,40 @@
+{
+  "id": "caselab",
+  "name": "CaseLab / Zilla",
+  "canonical_repo": null,
+  "purpose": "Multi-step DE take-home assignment simulator.",
+  "current_state": "Planned; Zillacode donor source exists; canonical repo not assigned.",
+  "target_scope": [
+    "multi-step cases",
+    "multi-file tasks",
+    "Spark diagnosis",
+    "Airflow cases using Airflow Lab",
+    "bounded dbt exercises",
+    "grading/reasoning",
+    "Contoso datasets"
+  ],
+  "features": [
+    [
+      "case engine",
+      "planned"
+    ],
+    [
+      "Zillacode content migration",
+      "planned"
+    ],
+    [
+      "deep Spark cases",
+      "planned"
+    ],
+    [
+      "Airflow Lab integration",
+      "planned"
+    ],
+    [
+      "bounded dbt cases",
+      "planned"
+    ]
+  ],
+  "last_reviewed": "2026-09-22",
+  "next_action": "Assign canonical repo and audit donor exercises."
+}
