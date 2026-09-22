@@ -1,0 +1,54 @@
+{
+  "id": "datapass",
+  "name": "Datapass",
+  "canonical_repo": "julian-passebecq/ducklabms_code",
+  "purpose": "DE coding/interview studio.",
+  "current_state": "Qualified broad local V1 exists; target refocus is not yet completed.",
+  "target_scope": [
+    "Arena",
+    "notebook",
+    "Fabric-style notebook skin",
+    "SQL",
+    "T-SQL interview mode",
+    "Python",
+    "pandas",
+    "Polars",
+    "bounded PySpark",
+    "algorithms",
+    "thin Airflow DAG scratchpad"
+  ],
+  "out_of_scope": [
+    "full dbt Studio",
+    "warehouse/modeling studio",
+    "visual Data Factory product",
+    "deep Airflow simulator"
+  ],
+  "features": [
+    [
+      "Arena/grading/attempts",
+      "qualified"
+    ],
+    [
+      "Notebook/Monaco",
+      "qualified"
+    ],
+    [
+      "SQL/Python/pandas/Polars",
+      "qualified"
+    ],
+    [
+      "bounded PySpark",
+      "implemented"
+    ],
+    [
+      "T-SQL interview mode",
+      "planned"
+    ],
+    [
+      "thin Airflow DAG scratchpad",
+      "planned"
+    ]
+  ],
+  "last_reviewed": "2026-09-22",
+  "next_action": "Refocus only after donor assets needed by Contoso/FactoryLab are safely reused."
+}
