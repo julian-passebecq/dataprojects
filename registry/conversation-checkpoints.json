@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-22",
+  "note": "Curated project checkpoints derived from recent Codex/ChatGPT project conversations available during the audit. This is not a raw chat archive.",
+  "checkpoints": [
+    {
+      "date": "2026-09-17",
+      "entity": "Datapass",
+      "repo": "julian-passebecq/ducklabms_code",
+      "checkpoint": "Active repo established; ducklake_mslab treated as archive-only. v0.1 commit b5f565517bbce7f921e21a96a14b30d0f5e9b88f; migration sources included Fabric, Power BI, Airflow/dbt, Mosaic and SparkLab.",
+      "significance": "Start of current consolidated local-first Datapass line."
+    },
+    {
+      "date": "2026-09-21",
+      "entity": "Datapass",
+      "repo": "julian-passebecq/ducklabms_code",
+      "checkpoint": "Release qualification converged; later PR #6/#7 and PR #8 produced canonical main c1ebf0d982fbcb2d22564c2bc04ab290630cfba7.",
+      "significance": "V1 release line effectively frozen."
+    },
+    {
+      "date": "2026-09-21",
+      "entity": "fastapi-fabric",
+      "repo": "julian-passebecq/fastapi-fabric",
+      "checkpoint": "V0.1 scaffold reached main with CRUD, graph validation, simulated runs/history/cancellation, parameters/variables and expression evaluator; 4 tests passed.",
+      "significance": "Standalone Factory semantic backend exists; real executor intentionally deferred."
+    },
+    {
+      "date": "2026-09-22",
+      "entity": "Fabric DataPass Toolbox",
+      "repo": "julian-passebecq/fabricdatapasstoolbox",
+      "checkpoint": "codex/initial-vscode-companion evolved into V0.5-style VS Code companion with checklist/resources/handoff/toolbox webview; CI/VSIX reported green.",
+      "significance": "This is a real-Fabric companion, not FactoryLab."
+    },
+    {
+      "date": "2026-09-22",
+      "entity": "Fabric Ops Studio",
+      "repo": "julian-passebecq/fabric-toolbox_J",
+      "checkpoint": "Work progressed from reliability/project-contract milestones into Project Composer, Foil'o RTI/Eventstream generation, reconciliation and deployment-acceptance branches.",
+      "significance": "Multiple successor branches now create branch-authority ambiguity."
+    },
+    {
+      "date": "2026-09-22",
+      "entity": "FactoryLab",
+      "checkpoint": "Architecture revised after reviewing Duckle: Fabric/ADF donor UI + fastapi-fabric semantic adapter + Duckle lower execution layer + DuckDB/DuckLake.",
+      "significance": "No new generic executor should be written before Duckle spike."
+    },
+    {
+      "date": "2026-09-22",
+      "entity": "Product constellation",
+      "repo": "julian-passebecq/dataprojects",
+      "checkpoint": "Global constellation expanded to six core products: Datapass, CaseLab, Airflow Lab, FactoryLab, Contoso Data Studio, PBI/Semantic Lab; toolboxes/IDEs/extensions separated from products.",
+      "significance": "dataprojects became global architecture authority."
+    },
+    {
+      "date": "2026-09-22",
+      "entity": "Contoso Data Studio",
+      "repo": "julian-passebecq/contoso-data-studio",
+      "checkpoint": "feat/ducklake-foundation README shows local-first Generate -> DuckLake Bronze -> dbt Silver/Gold -> SQL/KPI/Charts architecture already implemented on feature branch.",
+      "significance": "Contoso is no longer 'mostly empty' on its active branch; summary sources must stop reading main only."
+    },
+    {
+      "date": "2026-09-22",
+      "entity": "PBI / Semantic Lab",
+      "checkpoint": "Focused sixth product defined around semantic model, DAX query/editor, model health, lineage and exercises; PbiBench/TabularEditor_J are donors rather than additional core products.",
+      "significance": "Prevents continuing multiple competing Power BI IDE/product lines."
+    }
+  ]
+}
