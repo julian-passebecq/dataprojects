@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-22",
+  "findings": [
+    {
+      "id": "I001",
+      "severity": "critical",
+      "summary": "The global architecture evolved from four to six products while datapasscontrol still contained older four-product language.",
+      "state": "mitigated",
+      "action": "dataprojects is now global authority; datapasscontrol README/AGENTS point to it."
+    },
+    {
+      "id": "I002",
+      "severity": "high",
+      "summary": "Several canonical implementations live on long-lived feature branches rather than main.",
+      "examples": [
+        "contoso-data-studio feat/ducklake-foundation ahead by 179",
+        "fabricdatapasstoolbox codex/initial-vscode-companion ahead by 30",
+        "fastapispark real-Spark branch ahead by 26"
+      ],
+      "state": "open",
+      "action": "Establish per-repo merge/release decisions."
+    },
+    {
+      "id": "I003",
+      "severity": "high",
+      "summary": "Fabric Ops main is upstream-like while major custom work lives on branches 170-185 commits ahead, so reading main alone gives a false project state.",
+      "state": "open",
+      "action": "Mark integration branch as authoritative or merge a clean release line."
+    },
+    {
+      "id": "I004",
+      "severity": "high",
+      "summary": "FOIL Databricks DAB feature branches are behind main while still ahead with unique commits.",
+      "state": "open",
+      "action": "Reconcile/retire to avoid agents restarting from stale feature branches."
+    },
+    {
+      "id": "I005",
+      "severity": "high",
+      "summary": "Interview curriculum exists in multiple independently polished products with their own tests/releases, creating repeated UX and content work.",
+      "state": "open",
+      "action": "Canonicalize Datapass/CaseLab and convert other apps to source/donor/consumer status."
+    },
+    {
+      "id": "I006",
+      "severity": "medium",
+      "summary": "FactoryLab already has rich donor UI and backend but lacks a canonical standalone repo, encouraging repeated greenfield starts.",
+      "state": "open",
+      "action": "Duckle spike then create/assign canonical FactoryLab repo immediately."
+    },
+    {
+      "id": "I007",
+      "severity": "medium",
+      "summary": "PBI/Semantic Lab is conceptually approved but not assigned a canonical repo, while PbiBench and TabularEditor_J continue to exist as capable codebases.",
+      "state": "open",
+      "action": "Choose extraction strategy before new semantic-model UI work."
+    }
+  ]
+}
