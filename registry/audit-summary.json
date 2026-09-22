@@ -84,9 +84,18 @@
     "atlas_project": "DATAPASSCONTROL",
     "project_id": "6ab286d91f303b893784fc72",
     "cluster": "ClusterDP",
-    "current_cluster_state": "FREE / AZURE EUROPE_WEST / MongoDB 8.0.32 / IDLE",
-    "current_user_databases": "none yet",
-    "proposed_database": "dataprojects_control",
-    "status": "awaiting explicit approval before writes"
+    "database": "dataprojects_control",
+    "status": "initialized",
+    "collections": {
+      "entities": 16,
+      "repositories": 28,
+      "work_items": 20,
+      "events": 14,
+      "relationships": 15,
+      "audit_runs": 1
+    },
+    "total_documents": 94,
+    "indexes": 17,
+    "authority_rule": "MongoDB = granular operational/history layer; GitHub dataprojects JSON = summarized versioned architecture view."
   }
 }
