@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-22",
+  "items": [
+    {
+      "id": "B001",
+      "priority": "P0",
+      "product": "portfolio",
+      "type": "audit",
+      "status": "ongoing",
+      "title": "Deep-review all 100 connector-visible GitHub repositories",
+      "detail": "Repository inventory exists; only strategic/overlap repos are deeply reviewed. Classify remaining repos as active/supporting/donor/frozen/legacy/archive-candidate without deleting anything."
+    },
+    {
+      "id": "B002",
+      "priority": "P0",
+      "product": "datapass",
+      "type": "dedup",
+      "status": "todo",
+      "title": "Resolve interview-app duplication",
+      "detail": "Compare leetcodedataeng, datainterview, deepnotejul, Fluent2_J_CodeLab, Formation, TeachSQL/sqldubr and CloudArchi against Datapass/CaseLab. Preserve unique content, then freeze redundant product shells."
+    },
+    {
+      "id": "B003",
+      "priority": "P0",
+      "product": "factorylab",
+      "type": "architecture",
+      "status": "todo",
+      "title": "Run Duckle adapter spike",
+      "detail": "Map FactoryLab IR to Duckle JSON; execute source/transform/DuckLake sink; recover preview, SQL, lineage, rows/timings and one control-flow node before writing any new executor."
+    },
+    {
+      "id": "B004",
+      "priority": "P0",
+      "product": "factorylab",
+      "type": "repo",
+      "status": "blocked",
+      "title": "Assign canonical FactoryLab repo",
+      "detail": "Do after Duckle spike so the repo starts from the selected architecture rather than duplicating donors."
+    },
+    {
+      "id": "B005",
+      "priority": "P0",
+      "product": "contoso",
+      "type": "release",
+      "status": "ongoing",
+      "title": "Consolidate feat/ducklake-foundation",
+      "detail": "Branch is far ahead of main and already contains generator, DuckLake, dbt, charts and UI. Establish a clean merge/release path before starting duplicate implementations elsewhere."
+    },
+    {
+      "id": "B006",
+      "priority": "P0",
+      "product": "fabric_ops",
+      "type": "branch_hygiene",
+      "status": "ongoing",
+      "title": "Reconcile Fabric Ops branch stack",
+      "detail": "Multiple long-lived branches are 170-185 commits ahead of main. Establish current integration branch and close/supersede obsolete PR branches."
+    },
+    {
+      "id": "B007",
+      "priority": "P1",
+      "product": "pbilab",
+      "type": "architecture",
+      "status": "todo",
+      "title": "Choose focused PBI Lab canonical repo",
+      "detail": "Extract from PbiBench/TabularEditor_J instead of starting another full IDE."
+    },
+    {
+      "id": "B008",
+      "priority": "P1",
+      "product": "airflowlab",
+      "type": "architecture",
+      "status": "todo",
+      "title": "Create Airflow Lab + fastapiflow contract",
+      "detail": "Define safe Airflow IR, parser, scheduler simulation and exercise boundary before coding in empty datapass-airflow-runner."
+    },
+    {
+      "id": "B009",
+      "priority": "P1",
+      "product": "fastapispark",
+      "type": "release",
+      "status": "todo",
+      "title": "Decide real-Spark verification branch merge",
+      "detail": "codex/real-spark-github-actions-1 is 26 commits ahead of main; qualify and merge or explicitly keep experimental."
+    },
+    {
+      "id": "B010",
+      "priority": "P1",
+      "product": "foil",
+      "type": "branch_hygiene",
+      "status": "todo",
+      "title": "Reconcile stale FOIL DAB feature branches",
+      "detail": "Two feature branches diverged from main; preserve useful commits or retire branches."
+    },
+    {
+      "id": "B011",
+      "priority": "P1",
+      "product": "portfolio",
+      "type": "governance",
+      "status": "todo",
+      "title": "Store detailed checkpoints in DATAPASSCONTROL MongoDB",
+      "detail": "Use Mongo for granular repo/work-item/event/relationship history; GitHub dataprojects remains summarized versioned view. Requires approved schema/write initialization."
+    }
+  ]
+}
