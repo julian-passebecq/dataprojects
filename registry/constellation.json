@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-22",
+  "authority": {
+    "global_registry": "julian-passebecq/dataprojects",
+    "detailed_learning_family_registry": "julian-passebecq/datapasscontrol",
+    "implementation_truth": "owning repository"
+  },
+  "categories": [
+    {
+      "id": "core_products",
+      "projects": [
+        "datapass",
+        "caselab",
+        "airflowlab",
+        "factorylab",
+        "contoso",
+        "pbilab"
+      ]
+    },
+    {
+      "id": "toolboxes_ides_extensions",
+      "registry": "registry/tooling.json"
+    },
+    {
+      "id": "runtime_services",
+      "registry": "registry/services.json"
+    },
+    {
+      "id": "domain_projects",
+      "registry": "registry/domain-projects.json"
+    },
+    {
+      "id": "donors_references",
+      "registry": "registry/tooling.json"
+    }
+  ],
+  "products": [
+    {
+      "id": "datapass",
+      "file": "registry/products/datapass.json",
+      "state": "qualified_refocus_planned",
+      "priority": "P0"
+    },
+    {
+      "id": "caselab",
+      "file": "registry/products/caselab.json",
+      "state": "planned",
+      "priority": "P1"
+    },
+    {
+      "id": "airflowlab",
+      "file": "registry/products/airflowlab.json",
+      "state": "planned",
+      "priority": "P1"
+    },
+    {
+      "id": "factorylab",
+      "file": "registry/products/factorylab.json",
+      "state": "prototype_assembly",
+      "priority": "P0"
+    },
+    {
+      "id": "contoso",
+      "file": "registry/products/contoso.json",
+      "state": "active_early",
+      "priority": "P0"
+    },
+    {
+      "id": "pbilab",
+      "file": "registry/products/pbilab.json",
+      "state": "planned_from_donors",
+      "priority": "P1"
+    }
+  ],
+  "relationships": [
+    {
+      "from": "datapass",
+      "to": "caselab",
+      "meaning": "coding drills become realistic assignments"
+    },
+    {
+      "from": "caselab",
+      "to": "airflowlab",
+      "meaning": "cases use deep Airflow practice"
+    },
+    {
+      "from": "caselab",
+      "to": "factorylab",
+      "meaning": "cases use visual pipeline practice"
+    },
+    {
+      "from": "factorylab",
+      "to": "contoso",
+      "meaning": "pipelines operate on realistic platform data"
+    },
+    {
+      "from": "contoso",
+      "to": "pbilab",
+      "meaning": "facts/dimensions/marts feed semantic modeling and DAX"
+    }
+  ],
+  "visualization": {
+    "source_of_truth": "JSON in GitHub",
+    "zero_infra": "README Mermaid",
+    "recommended_rich_view": "static React/Vite dashboard",
+    "database": "none"
+  }
+}
