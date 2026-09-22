@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-22",
+  "items": [
+    {
+      "id": "W001",
+      "entity": "Datapass",
+      "repo": "julian-passebecq/ducklabms_code",
+      "state": "frozen_after_qualified_fix",
+      "date": "2026-09-22",
+      "branch": "main",
+      "commit": "c1ebf0d982fbcb2d22564c2bc04ab290630cfba7",
+      "stopped_reason": "V1 qualified; next work is product refocus, not more broad V1 features."
+    },
+    {
+      "id": "W002",
+      "entity": "Contoso Data Studio",
+      "repo": "julian-passebecq/contoso-data-studio",
+      "state": "active",
+      "date": "2026-09-22",
+      "branch": "feat/ducklake-foundation",
+      "branch_relation": "179 commits ahead of main at audit time",
+      "stopped_reason": "Branch already contains the meaningful product foundation; needs release/merge consolidation."
+    },
+    {
+      "id": "W003",
+      "entity": "Fabric DataPass Toolbox",
+      "repo": "julian-passebecq/fabricdatapasstoolbox",
+      "state": "active_prototype",
+      "date": "2026-09-22",
+      "branch": "codex/initial-vscode-companion",
+      "branch_relation": "30 commits ahead of main",
+      "stopped_reason": "Recent checkpoint reported CI/VSIX green; unit/regression coverage was next."
+    },
+    {
+      "id": "W004",
+      "entity": "Fabric Ops Studio",
+      "repo": "julian-passebecq/fabric-toolbox_J",
+      "state": "active_branch_stack",
+      "date": "2026-09-22",
+      "branches": [
+        "fabric-ops-studio-v1",
+        "codex/foilo-eventstream-definition",
+        "codex/eventstream-definition-reconcile",
+        "codex/foilo-deployment-acceptance"
+      ],
+      "stopped_reason": "Work continued across several successor branches; exact current integration head needs consolidation."
+    },
+    {
+      "id": "W005",
+      "entity": "FactoryLab",
+      "repo": null,
+      "state": "architecture_ready_for_spike",
+      "date": "2026-09-22",
+      "donors": [
+        "ducklabms_code:migration-sources/fabric",
+        "fastapi-fabric"
+      ],
+      "stopped_reason": "Do Duckle adapter spike before assigning/assembling canonical app repo."
+    },
+    {
+      "id": "W006",
+      "entity": "fastapispark",
+      "repo": "julian-passebecq/fastapispark",
+      "state": "active_experimental_branch",
+      "date": "2026-09-22",
+      "branch": "codex/real-spark-github-actions-1",
+      "branch_relation": "26 commits ahead of main",
+      "stopped_reason": "Needs qualification and merge/keep-experimental decision."
+    },
+    {
+      "id": "W007",
+      "entity": "PBI / Semantic Lab",
+      "repo": null,
+      "state": "planned_from_existing_donors",
+      "date": "2026-09-22",
+      "donors": [
+        "powerbi_enhanced_dev",
+        "TabularEditor_J"
+      ],
+      "stopped_reason": "Canonical repo not chosen; avoid another greenfield semantic-model app."
+    },
+    {
+      "id": "W008",
+      "entity": "Airflow Lab",
+      "repo": null,
+      "state": "planned",
+      "date": "2026-09-22",
+      "runtime_candidate": "julian-passebecq/datapass-airflow-runner",
+      "stopped_reason": "Repo/runtime contract not defined; do not code before safe IR/simulator design."
+    },
+    {
+      "id": "W009",
+      "entity": "FOIL Databricks DAB",
+      "repo": "julian-passebecq/foil_databrick_dab",
+      "state": "main_live_test_ready",
+      "date": "2026-09-22",
+      "branch": "main",
+      "stopped_reason": "Needs first authenticated live Databricks proof; stale feature branches need reconciliation."
+    }
+  ]
+}
