@@ -127,6 +127,20 @@ flowchart LR
     DU --> DB
 ```
 
+## Portfolio audit / anti-duplication controls
+
+The registry now has explicit operational views:
+
+- `registry/audit-summary.json` — current risk/status summary
+- `registry/backlog.json` — backlog and blockers
+- `registry/conflicts.json` — duplicate/scope conflicts
+- `registry/ongoing.json` — active and recently active work
+- `registry/debug-test.json` — QA/debug checkpoints
+- `registry/incoherences.json` — architecture/status inconsistencies
+- `registry/repo-cartography.json` — strategic repo ownership and overlap map
+
+These GitHub files are intentionally the **summary layer**. The planned MongoDB Atlas control store will hold granular repo observations, conversation checkpoints, work items, relationships and append-only events so agents can reconstruct where work stopped without overloading the GitHub registry.
+
 ## Status vocabulary
 
 - `qualified` — release/test-qualified.
