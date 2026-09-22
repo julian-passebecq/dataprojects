@@ -1,0 +1,225 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-22",
+  "scope": "Strategic current repositories + high-risk overlap/duplicate candidates. Not yet a full historical archive of every GitHub experiment.",
+  "repos": [
+    {
+      "repo": "julian-passebecq/ducklabms_code",
+      "role": "canonical Datapass",
+      "category": "core_product",
+      "authority": "main",
+      "risk": "many historical branches"
+    },
+    {
+      "repo": "julian-passebecq/leetcodedataeng",
+      "role": "interview curriculum duplicate/donor candidate",
+      "category": "overlap_candidate",
+      "authority": "main",
+      "risk": "critical overlap with Datapass"
+    },
+    {
+      "repo": "julian-passebecq/datainterview",
+      "role": "broad interview content donor candidate",
+      "category": "overlap_candidate",
+      "authority": "main",
+      "risk": "critical overlap with Datapass/CaseLab/Factory/Airflow areas"
+    },
+    {
+      "repo": "julian-passebecq/deepnotejul",
+      "role": "notebook/interview donor candidate",
+      "category": "overlap_candidate",
+      "authority": "main",
+      "active_branches": [
+        "de-interview-architecture-v2.1",
+        "de-interview-leetcode-v2.2"
+      ],
+      "risk": "high overlap with Datapass notebook direction"
+    },
+    {
+      "repo": "julian-passebecq/Fluent2_J_CodeLab",
+      "role": "Datapass-style consumer/donor",
+      "category": "overlap_candidate",
+      "authority": "main"
+    },
+    {
+      "repo": "julian-passebecq/Fluent2_J_Formation",
+      "role": "learning-content shell/donor",
+      "category": "overlap_candidate",
+      "authority": "main"
+    },
+    {
+      "repo": "julian-passebecq/sqldubr",
+      "role": "SQL/PowerBI/Databricks reflexes donor",
+      "category": "overlap_candidate",
+      "authority": "main"
+    },
+    {
+      "repo": "julian-passebecq/Fluent2_J_CloudArchi",
+      "role": "cloud architecture learning donor",
+      "category": "overlap_candidate",
+      "authority": "main"
+    },
+    {
+      "repo": "julian-passebecq/fastapispark",
+      "role": "shared Spark runtime",
+      "category": "runtime_service",
+      "authority": "main",
+      "active_branch": "codex/real-spark-github-actions-1"
+    },
+    {
+      "repo": "julian-passebecq/datapass-airflow-runner",
+      "role": "candidate fastapiflow/Airflow Lab runtime",
+      "category": "runtime_candidate",
+      "authority": "main",
+      "state": "empty_or_near_empty"
+    },
+    {
+      "repo": "julian-passebecq/fastapi-fabric",
+      "role": "FactoryLab semantic/control API",
+      "category": "runtime_service",
+      "authority": "main"
+    },
+    {
+      "repo": "julian-passebecq/contoso-data-studio",
+      "role": "canonical Contoso product",
+      "category": "core_product",
+      "authority": "main",
+      "active_branch": "feat/ducklake-foundation"
+    },
+    {
+      "repo": "julian-passebecq/Contoso-Data-Generator-V2",
+      "role": "Contoso generator asset",
+      "category": "supporting_asset",
+      "authority": "main"
+    },
+    {
+      "repo": "julian-passebecq/Contoso_Data_Fabric",
+      "role": "Fabric/Contoso donor/reference",
+      "category": "donor_reference",
+      "authority": "main",
+      "active_branches": [
+        "feat/csharp-fabric-desktop-v1",
+        "feat/fabric-pipeline-builder-v1"
+      ]
+    },
+    {
+      "repo": "julian-passebecq/fabricdatapasstoolbox",
+      "role": "real-Fabric VS Code companion",
+      "category": "toolbox",
+      "authority": "main",
+      "active_branches": [
+        "codex/initial-vscode-companion",
+        "codex/v0-vscode-toolbox"
+      ]
+    },
+    {
+      "repo": "julian-passebecq/fabric-toolbox_J",
+      "role": "real-Fabric ops/toolbox fork",
+      "category": "toolbox_fork",
+      "authority": "main",
+      "risk": "large active branch stack"
+    },
+    {
+      "repo": "julian-passebecq/powerbi_enhanced_dev",
+      "role": "PbiBench engineering IDE donor",
+      "category": "engineering_tool_donor",
+      "authority": "main"
+    },
+    {
+      "repo": "julian-passebecq/TabularEditor_J",
+      "role": "TE2/TOM donor",
+      "category": "fork_donor",
+      "authority": "master",
+      "active_branches": [
+        "pbi-workflow-pro-v0.1",
+        "pbi-workflow-pro-v0.2"
+      ]
+    },
+    {
+      "repo": "julian-passebecq/databricks-vscode-foil",
+      "role": "FOIL-specific Databricks extension fork",
+      "category": "domain_extension",
+      "authority": "main",
+      "active_branch": "foil-lab-mvp"
+    },
+    {
+      "repo": "julian-passebecq/foil_databrick_dab",
+      "role": "FOIL Databricks domain lab",
+      "category": "domain_project",
+      "authority": "main",
+      "active_branches": [
+        "feat/bronze-silver-gold",
+        "feat/synthetic-twin-foundation"
+      ]
+    },
+    {
+      "repo": "julian-passebecq/foil-ai-extension",
+      "role": "FOIL navigator/binder",
+      "category": "supporting_extension",
+      "authority": "main"
+    },
+    {
+      "repo": "julian-passebecq/foil-control-v1",
+      "role": "FOIL control/export/schema tooling",
+      "category": "domain_control",
+      "authority": "main",
+      "active_branches": [
+        "feature/foil-eye-v1",
+        "mongodb-atlas-bootstrap"
+      ]
+    },
+    {
+      "repo": "julian-passebecq/dataprojects",
+      "role": "global portfolio registry",
+      "category": "registry",
+      "authority": "main"
+    },
+    {
+      "repo": "julian-passebecq/datapasscontrol",
+      "role": "detailed historical/sub-registry",
+      "category": "registry",
+      "authority": "main"
+    },
+    {
+      "repo": "julian-passebecq/atlasnote",
+      "role": "separate Atlas product",
+      "category": "separate_family",
+      "authority": "main",
+      "risk": "very large parallel branch set"
+    },
+    {
+      "repo": "julian-passebecq/atlascode",
+      "role": "Atlas code/studio companion",
+      "category": "separate_family",
+      "authority": "main",
+      "active_branch": "codex/atlascode-studio-v1"
+    },
+    {
+      "repo": "julian-passebecq/atlasmongov3",
+      "role": "Atlas Mongo foundation",
+      "category": "separate_family",
+      "authority": "main",
+      "active_branch": "v3/mongo-foundation"
+    },
+    {
+      "repo": "julian-passebecq/vscodedb",
+      "role": "large VS Code fork/reference",
+      "category": "tooling_reference",
+      "authority": "main",
+      "risk": "classify before reuse"
+    }
+  ],
+  "historical_overlap_candidates": [
+    "airflow_start",
+    "airflow_start2",
+    "airflow_etladventureworks",
+    "airflowcsv",
+    "airflow_sqlserver",
+    "snowflake_dbt_V1",
+    "dbt-demo",
+    "powerbi-portfolio",
+    "sql_schema_visualizer",
+    "reactdatamodel",
+    "reactflowtemplate"
+  ]
+}
