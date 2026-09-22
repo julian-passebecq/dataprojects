@@ -1,0 +1,45 @@
+{
+  "id": "factorylab",
+  "name": "Fabric Factory Lab",
+  "canonical_repo": null,
+  "frontend_donor": "julian-passebecq/ducklabms_code:migration-sources/fabric",
+  "semantic_backend": "julian-passebecq/fastapi-fabric",
+  "external_execution_candidate": "slothflowlabs/duckle",
+  "purpose": "Fabric/ADF-style visual pipelines and Mapping Data Flow learning.",
+  "current_state": "Rich React Flow donor UI + fastapi-fabric simulation backend exist; standalone app not assembled; Duckle is lower-layer candidate.",
+  "target_scope": [
+    "Pipeline Studio",
+    "Mapping Data Flow",
+    "React Flow",
+    "parameters/variables/expressions",
+    "Copy/Lookup/SQL/Notebook/control flow",
+    "Data Preview",
+    "Inspect",
+    "Monitor",
+    "DuckLake evidence"
+  ],
+  "features": [
+    [
+      "Fabric/ADF donor UI",
+      "implemented_donor"
+    ],
+    [
+      "fastapi-fabric",
+      "implemented"
+    ],
+    [
+      "Duckle integration spike",
+      "planned_priority"
+    ],
+    [
+      "standalone app",
+      "planned"
+    ],
+    [
+      "real local data execution",
+      "planned"
+    ]
+  ],
+  "last_reviewed": "2026-09-22",
+  "next_action": "Run Duckle adapter spike before building another executor."
+}
