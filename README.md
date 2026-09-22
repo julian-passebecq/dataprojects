@@ -33,9 +33,7 @@ flowchart LR
     FL --> CT
     CT --> PB
 
-    CL -. composes .-> AL
-    CL -. composes .-> FL
-    CL -. consumes data .-> CT
+    CL -. uses realistic data .-> CT
 ```
 
 | Product | Primary purpose | Canonical repo | Current state |
@@ -64,6 +62,34 @@ These are **not extra core products by default**.
 
 See `registry/tooling.json`.
 
+```mermaid
+flowchart LR
+    subgraph Fabric["Fabric engineering tools"]
+        FDT[Fabric DataPass Toolbox]
+        FOS[Fabric Ops Studio / fabric-toolbox_J]
+        RF[Real Microsoft Fabric]
+        FDT --> RF
+        FOS --> RF
+    end
+
+    subgraph PowerBI["Power BI engineering donors"]
+        TE[TabularEditor_J]
+        PBEN[PbiBench / powerbi_enhanced_dev]
+        PL[PBI / Semantic Lab]
+        TE --> PBEN
+        TE --> PL
+        PBEN --> PL
+    end
+
+    subgraph FoilTools["FOIL developer tooling"]
+        FC[FOIL control]
+        FAI[FOIL AI extension]
+        DVF[Databricks VS Code FOIL fork]
+        FDAB[FOIL Databricks DAB]
+        FC --> FAI --> DVF --> FDAB
+    end
+```
+
 ## Domain family: FOIL
 
 ```mermaid
@@ -80,12 +106,17 @@ The FOIL repos validate/use the tooling but are not additional general-purpose p
 ## Runtime/service layer
 
 ```mermaid
-flowchart TD
+flowchart LR
     SP[fastapispark]
     AF[fastapiflow candidate]
     FF[fastapi-fabric]
     DU[Duckle - external]
     DB[DuckDB / DuckLake]
+
+    DP[Datapass]
+    CL[CaseLab]
+    AL[Airflow Lab]
+    FL[Fabric Factory Lab]
 
     SP --> DP
     SP --> CL
