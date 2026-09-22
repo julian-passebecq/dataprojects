@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-22",
+  "note": "Strategic repos only; not every historical GitHub experiment.",
+  "items": [
+    [
+      "julian-passebecq/dataprojects",
+      "global_registry"
+    ],
+    [
+      "julian-passebecq/datapasscontrol",
+      "detailed_subregistry"
+    ],
+    [
+      "julian-passebecq/ducklabms_code",
+      "core_product:datapass"
+    ],
+    [
+      "julian-passebecq/contoso-data-studio",
+      "core_product:contoso"
+    ],
+    [
+      "julian-passebecq/Contoso-Data-Generator-V2",
+      "supporting:contoso"
+    ],
+    [
+      "julian-passebecq/fastapi-fabric",
+      "service:factorylab"
+    ],
+    [
+      "julian-passebecq/datapass-airflow-runner",
+      "service_candidate:airflowlab"
+    ],
+    [
+      "julian-passebecq/fabricdatapasstoolbox",
+      "toolbox"
+    ],
+    [
+      "julian-passebecq/fabric-toolbox_J",
+      "toolbox_donor_fork"
+    ],
+    [
+      "julian-passebecq/powerbi_enhanced_dev",
+      "engineering_ide_donor:pbilab"
+    ],
+    [
+      "julian-passebecq/TabularEditor_J",
+      "donor:pbilab"
+    ],
+    [
+      "julian-passebecq/foil_databrick_dab",
+      "domain:foil"
+    ],
+    [
+      "julian-passebecq/databricks-vscode-foil",
+      "domain_extension:foil"
+    ],
+    [
+      "julian-passebecq/foil-ai-extension",
+      "domain_support:foil"
+    ],
+    [
+      "julian-passebecq/foil-control-v1",
+      "domain_control:foil"
+    ]
+  ]
+}
