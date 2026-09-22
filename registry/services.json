@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-22",
+  "items": [
+    {
+      "id": "fastapispark",
+      "repo": "julian-passebecq/fastapispark",
+      "state": "implemented",
+      "consumers": [
+        "datapass",
+        "caselab"
+      ],
+      "role": "bounded Spark/PySpark execution"
+    },
+    {
+      "id": "fastapiflow",
+      "repo": "julian-passebecq/datapass-airflow-runner",
+      "state": "planned_empty_candidate",
+      "consumers": [
+        "airflowlab",
+        "caselab"
+      ],
+      "role": "Airflow semantics/scheduler simulation"
+    },
+    {
+      "id": "fastapi_fabric",
+      "repo": "julian-passebecq/fastapi-fabric",
+      "state": "implemented_v0_simulation",
+      "consumers": [
+        "factorylab"
+      ],
+      "role": "Fabric semantics/control adapter"
+    },
+    {
+      "id": "duckle",
+      "repo": "slothflowlabs/duckle",
+      "state": "external_candidate",
+      "consumers": [
+        "factorylab"
+      ],
+      "role": "local ETL/data-flow engine over DuckDB/DuckLake"
+    }
+  ]
+}
