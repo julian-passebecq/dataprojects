@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-22",
+  "audit_scope": {
+    "sources": [
+      "recent Codex/ChatGPT project conversations through 2026-09-22",
+      "strategic GitHub repository/branch inspection",
+      "dataprojects registry",
+      "datapasscontrol sub-registry"
+    ],
+    "note": "This is the GitHub summary layer. Planned deeper event-level history belongs in MongoDB Atlas after approval."
+  },
+  "headline_findings": [
+    {
+      "severity": "high",
+      "area": "Factory/Fabric duplication risk",
+      "finding": "Factory/Data Factory work is spread across ducklabms_code donor UI, fastapi-fabric, Contoso_Data_Fabric, fabricdatapasstoolbox, and fabric-toolbox_J.",
+      "resolution": "FactoryLab owns the learning simulator; fabricdatapasstoolbox/fabric-toolbox_J remain real-Fabric tooling; Contoso_Data_Fabric is donor/reference unless explicitly promoted."
+    },
+    {
+      "severity": "high",
+      "area": "Power BI duplication risk",
+      "finding": "PbiBench, TabularEditor_J, and planned PBI/Semantic Lab overlap strongly.",
+      "resolution": "PBI Lab is the focused learning product; PbiBench and TabularEditor_J are donors/engineering tools, not parallel products."
+    },
+    {
+      "severity": "high",
+      "area": "Airflow duplication risk",
+      "finding": "Airflow experiments exist in Datapass branches, old airflow_* repos, an empty datapass-airflow-runner, and planned Airflow Lab.",
+      "resolution": "Airflow Lab owns deep Airflow practice; Datapass keeps only thin DAG coding; old airflow_* repos are references unless deliberately revived."
+    },
+    {
+      "severity": "medium",
+      "area": "Contoso repo split",
+      "finding": "Contoso-Data-Generator-V2, contoso-data-studio, and Contoso_Data_Fabric can look like competing products.",
+      "resolution": "Generator-V2 = data generator; contoso-data-studio = canonical product; Contoso_Data_Fabric = donor/reference for Fabric-specific experiments."
+    },
+    {
+      "severity": "medium",
+      "area": "Datapass branch sprawl",
+      "finding": "ducklabms_code contains many historic/integration/Codex branches after V1 qualification.",
+      "resolution": "main is canonical; broad V1 is frozen except bugfix/extraction/refocus work. Historic branches must not silently become new authorities."
+    }
+  ],
+  "current_portfolio_status": [
+    {
+      "id": "datapass",
+      "state": "qualified_refocus_planned",
+      "last_known": "2026-09-22",
+      "next": "scope refocus after donor extraction"
+    },
+    {
+      "id": "caselab",
+      "state": "planned",
+      "last_known": "2026-09-22",
+      "next": "assign canonical repo and migrate Zillacode donor"
+    },
+    {
+      "id": "airflowlab",
+      "state": "planned",
+      "last_known": "2026-09-22",
+      "next": "create canonical repo and fastapiflow contract"
+    },
+    {
+      "id": "factorylab",
+      "state": "prototype_assembly",
+      "last_known": "2026-09-22",
+      "next": "Duckle adapter spike before new executor work"
+    },
+    {
+      "id": "contoso",
+      "state": "active_early",
+      "last_known": "2026-09-22",
+      "next": "stabilize DuckLake foundation"
+    },
+    {
+      "id": "pbilab",
+      "state": "planned_from_donors",
+      "last_known": "2026-09-22",
+      "next": "extract focused product from PbiBench/TE2 donors"
+    }
+  ],
+  "mongo_plan": {
+    "atlas_project": "DATAPASSCONTROL",
+    "project_id": "6ab286d91f303b893784fc72",
+    "cluster": "ClusterDP",
+    "current_cluster_state": "FREE / AZURE EUROPE_WEST / MongoDB 8.0.32 / IDLE",
+    "current_user_databases": "none yet",
+    "proposed_database": "dataprojects_control",
+    "status": "awaiting explicit approval before writes"
+  }
+}
