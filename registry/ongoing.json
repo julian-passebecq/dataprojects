@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-22",
+  "note": "Current ongoing work reconstructed from recent Codex/ChatGPT conversations plus strategic GitHub branch inspection.",
+  "items": [
+    {
+      "project": "Datapass",
+      "repo": "julian-passebecq/ducklabms_code",
+      "status": "qualified_frozen_with_refocus_planned",
+      "date": "2026-09-22",
+      "canonical_branch": "main",
+      "evidence": [
+        "V1 QA merged to main",
+        "many historical integration/Codex branches remain"
+      ],
+      "next": "no broad new feature work; only bugfix/extraction/refocus"
+    },
+    {
+      "project": "FactoryLab",
+      "repos": [
+        "julian-passebecq/fastapi-fabric",
+        "julian-passebecq/ducklabms_code:migration-sources/fabric"
+      ],
+      "status": "architecture_active",
+      "date": "2026-09-22",
+      "evidence": [
+        "rich React Flow donor UI exists",
+        "fastapi-fabric V0 simulation/control backend exists",
+        "Duckle became preferred execution-foundation candidate"
+      ],
+      "next": "Duckle adapter spike"
+    },
+    {
+      "project": "Contoso Data Studio",
+      "repo": "julian-passebecq/contoso-data-studio",
+      "status": "active",
+      "date": "2026-09-22",
+      "canonical_branch": "main",
+      "active_branch": "feat/ducklake-foundation",
+      "next": "consolidate DuckLake foundation/release path before duplicate implementation"
+    },
+    {
+      "project": "Fabric DataPass Toolbox",
+      "repo": "julian-passebecq/fabricdatapasstoolbox",
+      "status": "active_prototype",
+      "date": "2026-09-22",
+      "active_branches": [
+        "codex/initial-vscode-companion",
+        "codex/v0-vscode-toolbox"
+      ],
+      "next": "keep as real-Fabric VS Code companion, not FactoryLab"
+    },
+    {
+      "project": "Fabric Ops Studio",
+      "repo": "julian-passebecq/fabric-toolbox_J",
+      "status": "active_branch_stack",
+      "date": "2026-09-22",
+      "active_branches": [
+        "fabric-ops-studio-v1",
+        "codex/m00-reliable-write-contract",
+        "codex/m01-project-contract",
+        "codex/m02-project-graph",
+        "codex/m03-readiness-bootstrap",
+        "codex/m04-native-release-bundles",
+        "codex/m05-vscode-companion",
+        "codex/eventstream-definition-reconcile",
+        "codex/foilo-deployment-acceptance"
+      ],
+      "next": "reconcile authoritative integration branch and stale work"
+    },
+    {
+      "project": "fastapispark",
+      "repo": "julian-passebecq/fastapispark",
+      "status": "implemented_with_experimental_real_spark_branch",
+      "date": "2026-09-22",
+      "active_branch": "codex/real-spark-github-actions-1",
+      "next": "qualify merge vs keep explicitly experimental"
+    },
+    {
+      "project": "Airflow Lab",
+      "repo": "julian-passebecq/datapass-airflow-runner",
+      "status": "planned_not_started",
+      "date": "2026-09-22",
+      "next": "define safe Airflow IR and simulator contract before coding"
+    },
+    {
+      "project": "PBI Lab",
+      "repos": [
+        "julian-passebecq/powerbi_enhanced_dev",
+        "julian-passebecq/TabularEditor_J"
+      ],
+      "status": "planned_from_donors",
+      "date": "2026-09-22",
+      "next": "select canonical focused product repo before new semantic UI work"
+    },
+    {
+      "project": "FOIL Databricks DAB",
+      "repo": "julian-passebecq/foil_databrick_dab",
+      "status": "active_domain_lab",
+      "date": "2026-09-22",
+      "active_branches": [
+        "feat/bronze-silver-gold",
+        "feat/synthetic-twin-foundation"
+      ],
+      "next": "live Databricks proof + feature-branch reconciliation"
+    },
+    {
+      "project": "Databricks VS Code FOIL",
+      "repo": "julian-passebecq/databricks-vscode-foil",
+      "status": "prototype_domain_fork",
+      "date": "2026-09-22",
+      "active_branch": "foil-lab-mvp",
+      "next": "keep FOIL-specific"
+    },
+    {
+      "project": "Interview duplicate cluster",
+      "repos": [
+        "julian-passebecq/leetcodedataeng",
+        "julian-passebecq/datainterview",
+        "julian-passebecq/deepnotejul",
+        "julian-passebecq/Fluent2_J_CodeLab",
+        "julian-passebecq/Fluent2_J_Formation",
+        "julian-passebecq/sqldubr",
+        "julian-passebecq/Fluent2_J_CloudArchi"
+      ],
+      "status": "audit_required",
+      "date": "2026-09-22",
+      "next": "classify unique content vs duplicate shells; Datapass/CaseLab remain canonical destinations"
+    },
+    {
+      "project": "AtlasNote",
+      "repo": "julian-passebecq/atlasnote",
+      "status": "separate_large_branch_stack",
+      "date": "2026-09-22",
+      "next": "dedicated audit later; do not mix into data-learning product decisions"
+    }
+  ]
+}
