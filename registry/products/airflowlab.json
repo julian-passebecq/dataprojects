@@ -1,0 +1,38 @@
+{
+  "id": "airflowlab",
+  "name": "Airflow Lab",
+  "canonical_repo": null,
+  "candidate_runtime_repo": "julian-passebecq/datapass-airflow-runner",
+  "purpose": "Full Airflow-style DAG/scheduler learning and exercises.",
+  "current_state": "Planned; candidate runtime repo exists but is empty.",
+  "target_scope": [
+    "Airflow 3-inspired DAG/Graph/Grid/Runs UI",
+    "Python/TaskFlow editor",
+    "parse/validate",
+    "retries",
+    "trigger rules",
+    "branching",
+    "sensors",
+    "pools/concurrency",
+    "catchup/backfill",
+    "XCom-like teaching",
+    "logs/timeline",
+    "exercises"
+  ],
+  "features": [
+    [
+      "React Flow DAG UI",
+      "planned"
+    ],
+    [
+      "fastapiflow scheduler simulation",
+      "planned"
+    ],
+    [
+      "exercise system",
+      "planned"
+    ]
+  ],
+  "last_reviewed": "2026-09-22",
+  "next_action": "Create canonical repo and define safe Airflow IR/runtime contract."
+}
