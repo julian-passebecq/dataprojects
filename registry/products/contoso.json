@@ -1,0 +1,43 @@
+{
+  "id": "contoso",
+  "name": "Contoso Data Studio",
+  "canonical_repo": "julian-passebecq/contoso-data-studio",
+  "generator_repo": "julian-passebecq/Contoso-Data-Generator-V2",
+  "purpose": "Realistic local analytics data platform.",
+  "current_state": "Early build; feat/ducklake-foundation branch exists; generator exists separately.",
+  "target_scope": [
+    "data generation",
+    "DuckDB/DuckLake",
+    "Bronze/Silver/Gold",
+    "real dbt Core",
+    "dbt lineage/artifacts",
+    "facts/dimensions",
+    "SCD",
+    "marts/KPIs",
+    "dbt Charts/light charts"
+  ],
+  "features": [
+    [
+      "generator",
+      "implemented_external_repo"
+    ],
+    [
+      "DuckLake foundation",
+      "active_branch"
+    ],
+    [
+      "dbt integration",
+      "planned_migration"
+    ],
+    [
+      "model/SCD",
+      "planned_migration"
+    ],
+    [
+      "marts/KPIs/charts",
+      "planned"
+    ]
+  ],
+  "last_reviewed": "2026-09-22",
+  "next_action": "Stabilize generator -> DuckLake, then reuse Datapass dbt/model/chart assets."
+}
