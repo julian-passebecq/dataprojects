@@ -89,12 +89,12 @@
     "collections": {
       "entities": 17,
       "repositories": 127,
-      "work_items": 25,
-      "events": 15,
+      "work_items": 28,
+      "events": 24,
       "relationships": 15,
-      "audit_runs": 2
+      "audit_runs": 3
     },
-    "total_documents": 201,
+    "total_documents": 214,
     "indexes": 17,
     "authority_rule": "MongoDB = granular operational/history layer; GitHub dataprojects JSON = summarized versioned architecture view."
   },
@@ -113,6 +113,16 @@
       "SQL content lineage across TeachSQL/upskill-sql/Formation/Datapass",
       "Airflow exercise harvesting",
       "PBI semantic-model fixture audit"
-    ]
+    ],
+    "history_reconstruction": {
+      "status": "ongoing",
+      "preserved_checkpoints": [
+        "Fabric/Azure Lab V2/V3 (2026-09-16)",
+        "Datapass Root/Core/Codebook milestones (2026-09-17 to 2026-09-19)",
+        "Contoso broad ReactOracle proposal marked historical (2026-09-21)",
+        "AtlasCode CI #129 checkpoint (2026-09-21)",
+        "FOIL Databricks architecture checkpoint (2026-09-10)"
+      ]
+    }
   }
 }
