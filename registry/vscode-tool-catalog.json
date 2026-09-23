@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-23",
+  "scope": "VS Code-centric data-platform tooling catalog for Fabric, Power BI, Databricks, infrastructure and project adapters.",
+  "rules": [
+    "Prefer vendor/community tooling when it already provides the required capability.",
+    "A VS Code peer extension remains independently installable and usable; the control plane may detect/focus/invoke documented commands.",
+    "CLI/library/toolbox assets are surfaced through tasks, terminals, runbooks or curated actions rather than wrapped into a new extension by default.",
+    "Project-specific profiles may live in separate repositories, but vendor client stacks should not be forked without a strong technical reason.",
+    "Specialized heavy UI may remain external when reproducing it inside VS Code would reduce capability."
+  ],
+  "items": [
+    {
+      "id": "fabricstudio",
+      "repo": "gbrueckl/FabricStudio",
+      "domain": "fabric",
+      "kind": "community_vscode_extension",
+      "integration": "peer_extension",
+      "observed_capabilities": [
+        "workspace/item browser",
+        "fabric:// filesystem",
+        "Fabric REST notebooks",
+        "Spark notebook execution",
+        "Fabric Git integration",
+        "deployment pipelines",
+        "TMDL/PBIR workflows"
+      ],
+      "decision": "USE",
+      "build_gap": "Only add project-specific shortcuts/status/actions not already provided."
+    },
+    {
+      "id": "onelake_vscode",
+      "repo": "gbrueckl/OneLake-VSCode",
+      "domain": "fabric",
+      "kind": "community_vscode_extension",
+      "integration": "peer_extension",
+      "observed_capabilities": [
+        "onelake:/ filesystem",
+        "OneLake browsing",
+        "guarded open/save"
+      ],
+      "decision": "USE",
+      "build_gap": "No custom OneLake explorer."
+    },
+    {
+      "id": "microsoft_fabric_toolbox",
+      "repo": "microsoft/fabric-toolbox",
+      "domain": "fabric",
+      "kind": "official_toolbox_catalog",
+      "integration": "curated_catalog_actions",
+      "observed_capabilities": [
+        "monitoring",
+        "accelerators",
+        "CI/CD samples",
+        "migration samples",
+        "RTI/Fabric/Spark monitoring"
+      ],
+      "decision": "CURATE",
+      "build_gap": "Index/select useful assets and expose project-aware launch/run actions."
+    },
+    {
+      "id": "fabric_cicd",
+      "repo": "microsoft/fabric-cicd",
+      "domain": "fabric",
+      "kind": "official_python_library",
+      "integration": "task_cli_library",
+      "observed_capabilities": [
+        "code-first Fabric CI/CD",
+        "source-controlled workspace deployments"
+      ],
+      "decision": "USE",
+      "build_gap": "VS Code commands/tasks can scaffold or run it; no dedicated VSIX required."
+    },
+    {
+      "id": "fabric_extensibility_toolkit",
+      "repo": "microsoft/fabric-extensibility-toolkit",
+      "domain": "fabric",
+      "kind": "official_fabric_workload_sdk",
+      "integration": "separate_fabric_workload_toolchain",
+      "observed_capabilities": [
+        "custom Fabric workloads/items",
+        "Fabric-native components",
+        "remote hosting",
+        "job scheduling"
+      ],
+      "decision": "USE_WHEN_BUILDING_FABRIC_NATIVE_WORKLOADS",
+      "build_gap": "Do not confuse a Fabric workload extension with a VS Code extension."
+    },
+    {
+      "id": "fabric_toolbox_gbrueckl",
+      "repo": "gbrueckl/Fabric.Toolbox",
+      "domain": "fabric",
+      "kind": "community_toolbox_repository",
+      "integration": "reference_curated_scripts",
+      "observed_capabilities": [
+        "Fabric and Data Engineering utility folders"
+      ],
+      "decision": "CURATE_AFTER_TEST",
+      "build_gap": "Promote individual proven tools only."
+    },
+    {
+      "id": "fabric_toolbox_j",
+      "repo": "julian-passebecq/fabric-toolbox_J",
+      "domain": "fabric",
+      "kind": "local_fork_donor",
+      "integration": "donor_history",
+      "decision": "FREEZE_GENERAL_UI_GROWTH",
+      "build_gap": "Move only proven generic actions into the Fabric adapter or callable scripts."
+    },
+    {
+      "id": "fabricdatapasstoolbox",
+      "repo": "julian-passebecq/fabricdatapasstoolbox",
+      "domain": "fabric",
+      "kind": "local_vscode_companion_experiment",
+      "integration": "merge_capabilities_into_main_control_plane",
+      "decision": "CONSOLIDATE",
+      "build_gap": "No second general-purpose Fabric companion extension unless a future independent distribution boundary appears."
+    },
+    {
+      "id": "power_bi_agentic_development",
+      "repo": "data-goblin/power-bi-agentic-development",
+      "domain": "powerbi",
+      "kind": "agentic_plugin_marketplace",
+      "integration": "optional_agentic_companion",
+      "observed_capabilities": [
+        "Power BI/Fabric skills",
+        "agents/hooks/plugins",
+        "Claude Code",
+        "Copilot CLI"
+      ],
+      "decision": "USE_NOT_REPACKAGE",
+      "build_gap": "Provide setup/status/runbook links from the control plane."
+    },
+    {
+      "id": "powerbi_macguyver_toolbox",
+      "repo": "data-goblin/powerbi-macguyver-toolbox",
+      "domain": "powerbi",
+      "kind": "pattern_template_reference",
+      "integration": "reference_catalog",
+      "decision": "REFERENCE",
+      "build_gap": "Knowledge/templates, not a VS Code client."
+    },
+    {
+      "id": "pbibench",
+      "repo": "julian-passebecq/powerbi_enhanced_dev",
+      "domain": "powerbi",
+      "kind": "local_csharp_engineering_ide_donor",
+      "integration": "specialized_external_or_donor",
+      "decision": "DO_NOT_USE_AS_GLOBAL_SHELL",
+      "build_gap": "Keep specialized model/report engineering where it adds value; move generic orchestration/navigation into VS Code."
+    },
+    {
+      "id": "tabular_editor_j",
+      "repo": "julian-passebecq/TabularEditor_J",
+      "domain": "powerbi",
+      "kind": "specialized_semantic_model_tool_donor",
+      "integration": "external_specialized_tool",
+      "decision": "KEEP_EXTERNAL",
+      "build_gap": "Launch/integrate instead of rebuilding advanced TOM editing in the control plane."
+    },
+    {
+      "id": "databricks_official_vscode",
+      "repo": null,
+      "domain": "databricks",
+      "kind": "vendor_vscode_extension",
+      "integration": "peer_extension",
+      "decision": "PRIMARY_CLIENT",
+      "build_gap": "Project adapter adds context/actions only."
+    },
+    {
+      "id": "databricks_ps",
+      "repo": "gbrueckl/Databricks.API.PowerShell",
+      "domain": "databricks",
+      "kind": "community_powershell_module",
+      "integration": "optional_task_provider",
+      "observed_capabilities": [
+        "REST cmdlets",
+        "workspace import/export",
+        "jobs",
+        "clusters",
+        "CLI/Azure authentication integration"
+      ],
+      "decision": "OPTIONAL",
+      "build_gap": "Useful for admin/automation; not primary Databricks workflow."
+    },
+    {
+      "id": "databricks_vscode_foil",
+      "repo": "julian-passebecq/databricks-vscode-foil",
+      "domain": "databricks",
+      "kind": "local_vendor_extension_fork_experiment",
+      "integration": "reference_only",
+      "decision": "FREEZE",
+      "build_gap": "Do not continue as main path; package identity currently conflicts with official extension."
+    },
+    {
+      "id": "foil_ai_extension",
+      "repo": "julian-passebecq/foil-ai-extension",
+      "domain": "project_profile",
+      "kind": "local_vscode_extension",
+      "integration": "foil_project_adapter_candidate",
+      "decision": "EVOLVE_OR_EXTRACT_PROFILE",
+      "build_gap": "FOIL-specific navigation/context should become the first project profile for the global control plane."
+    }
+  ]
+}
