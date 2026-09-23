@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-09-22",
+  "updated_at": "2026-09-23",
   "scope": "Strategic current repositories + high-risk overlap/duplicate candidates. Not yet a full historical archive of every GitHub experiment.",
   "repos": [
     {
@@ -207,6 +207,17 @@
       "category": "tooling_reference",
       "authority": "main",
       "risk": "classify before reuse"
+    },
+    {
+      "repo": "julian-passebecq/datapass-vscode",
+      "role": "canonical Data Platform VS Code control-plane implementation",
+      "category": "developer_control_plane",
+      "authority": "main",
+      "state": "handoff_seeded_pass1_pending",
+      "replaces_scope_of": [
+        "general Fabric companion UI growth in fabricdatapasstoolbox",
+        "FOIL-specific vendor-extension forking as the central IDE strategy"
+      ]
     }
   ],
   "historical_overlap_candidates": [
