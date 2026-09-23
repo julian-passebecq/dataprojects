@@ -37,7 +37,8 @@
         "powerbi",
         "databricks",
         "infrastructure",
-        "oracle_vm"
+        "oracle_vm",
+        "observability"
       ],
       "rule": "Adapters contain integration logic, not duplicated vendor implementations."
     },
@@ -62,6 +63,17 @@
     "fabric": {
       "strategy": "compose_existing_tools_then_fill_real_gaps",
       "tools": [
+        {
+          "repo": "Microsoft Fabric VS Code extension",
+          "kind": "vendor_vscode_extension",
+          "decision": "primary_vendor_extension",
+          "capabilities_observed": [
+            "Fabric account authentication",
+            "workspace access and management",
+            "programmatic item workflows and Git-oriented developer experience"
+          ],
+          "control_plane_role": "Primary Microsoft-supported VS Code integration. The Fabric adapter complements it with project context, CLI/CI-CD actions and curated toolbox capabilities."
+        },
         {
           "repo": "gbrueckl/FabricStudio",
           "kind": "community_vscode_extension",
@@ -90,6 +102,19 @@
             "open/save files with guarded writes"
           ],
           "control_plane_role": "Expose OneLake entry points from Fabric projects; do not build another OneLake explorer."
+        },
+        {
+          "repo": "Microsoft Fabric CLI",
+          "kind": "vendor_cli",
+          "decision": "primary_automation_surface",
+          "capabilities_observed": [
+            "interactive and scripted Fabric automation",
+            "workspace/item CRUD",
+            "item definition import/export",
+            "Git and CI/CD automation",
+            "deployment workflows"
+          ],
+          "control_plane_role": "Preferred command surface for many Fabric adapter actions; run through VS Code tasks/terminals and parse structured results where appropriate."
         },
         {
           "repo": "microsoft/fabric-toolbox",
@@ -143,7 +168,46 @@
           "decision": "consolidate_into_fabric_adapter",
           "control_plane_role": "Do not develop a second standalone Fabric toolbox extension unless an independent distribution boundary later appears."
         }
-      ]
+      ],
+      "integration_depth": {
+        "principle": "Integrate Fabric more deeply without rebuilding Fabric clients.",
+        "levels": [
+          {
+            "level": "peer_extension",
+            "examples": [
+              "Microsoft Fabric VS Code extension",
+              "Fabric Studio",
+              "OneLake-VSCode"
+            ],
+            "behavior": "Detect installation, focus/open views, invoke documented commands where stable."
+          },
+          {
+            "level": "cli_and_library",
+            "examples": [
+              "Fabric CLI (fab)",
+              "fabric-cicd"
+            ],
+            "behavior": "Expose project-aware VS Code commands/tasks for auth, validate, import/export, deploy and CI/CD."
+          },
+          {
+            "level": "toolbox_gallery",
+            "examples": [
+              "microsoft/fabric-toolbox",
+              "gbrueckl/Fabric.Toolbox"
+            ],
+            "behavior": "Index selected assets in a manifest and expose Open, Clone, Scaffold, Run, Deploy or Read actions according to asset type."
+          },
+          {
+            "level": "fabric_native_workload",
+            "examples": [
+              "microsoft/fabric-extensibility-toolkit"
+            ],
+            "behavior": "Launch/scaffold a separate Fabric workload project when the desired feature belongs inside Fabric itself."
+          }
+        ],
+        "separate_vsix_required": false,
+        "split_trigger": "Only split the Fabric adapter into a separate VSIX if it later needs independent distribution, security/auth isolation, incompatible dependencies or a materially different release lifecycle."
+      }
     },
     "powerbi": {
       "strategy": "vscode_first_for_source_agentic_and_automation_specialized_ui_external",
@@ -226,7 +290,9 @@
         {
           "name": "OpenTofu",
           "kind": "peer_vscode_extension_or_cli",
-          "decision": "use_directly"
+          "decision": "use_directly",
+          "extension": "OpenTofu official VS Code extension",
+          "control_plane_role": "Keep language/editor support in the peer extension; the control plane runs project-specific tofu workflows."
         },
         {
           "name": "Kubernetes",
@@ -258,6 +324,63 @@
         "logs"
       ],
       "boundary": "Use Remote SSH/terminal/OCI CLI or supported APIs for low-level operations."
+    },
+    "observability": {
+      "strategy": "observability_as_code_first_with_peer_tools",
+      "primary_platform": "Grafana",
+      "tools": [
+        {
+          "name": "gcx",
+          "kind": "vendor_cli",
+          "decision": "primary_grafana_cli",
+          "capabilities_observed": [
+            "Grafana resource management",
+            "multi-environment contexts",
+            "GitOps pull/push",
+            "dashboard-as-code development server",
+            "agent-friendly structured output"
+          ],
+          "control_plane_role": "Expose Grafana context, preview, validate, pull/push and environment commands. Treat grafanactl as deprecated."
+        },
+        {
+          "name": "Grafana Foundation SDK",
+          "kind": "vendor_sdk",
+          "decision": "use_for_dashboard_generation",
+          "preferred_language_for_vscode_project": "TypeScript",
+          "control_plane_role": "Scaffold and run typed dashboard generators stored in Git."
+        },
+        {
+          "name": "Grafana Terraform provider",
+          "kind": "iac_provider",
+          "decision": "use_with_opentofu_or_terraform_after_project_smoke_test",
+          "control_plane_role": "Deploy/manage dashboards and broader Grafana resources through the infrastructure adapter."
+        },
+        {
+          "name": "Grafana Git Sync",
+          "kind": "gitops",
+          "decision": "optional_git_native_deployment",
+          "control_plane_role": "Offer as an alternative to direct CLI/IaC deployment for Git-native dashboard workflows."
+        },
+        {
+          "name": "Grafana Cloud MCP",
+          "kind": "agent_integration",
+          "decision": "optional",
+          "control_plane_role": "Optional agentic observability integration; not required for the core VS Code workflow."
+        },
+        {
+          "name": "Grafana k6 VS Code extension",
+          "kind": "vendor_vscode_extension",
+          "decision": "optional_peer_extension",
+          "control_plane_role": "Use for k6 performance-test authoring/runs; do not treat it as a general Grafana dashboard extension."
+        }
+      ],
+      "example_flow": [
+        "dashboard TypeScript/Go source in Git",
+        "Foundation SDK generates dashboard/resources",
+        "gcx dev serve for local/live preview",
+        "git review",
+        "OpenTofu/Terraform provider, gcx push or Git Sync for deployment"
+      ]
     }
   },
   "project_profiles": {
@@ -273,15 +396,15 @@
       ]
     }
   },
-  "mermaid": "flowchart TB\n  CP[Data Platform VS Code Control Plane]\n  CP --> FAB[Fabric adapter]\n  CP --> PBI[Power BI adapter]\n  CP --> DBX[Databricks adapter]\n  CP --> INF[Infrastructure adapter]\n  CP --> PROJ[Project profiles]\n  FAB --> FSO[Fabric Studio extension]\n  FAB --> OL[OneLake-VSCode]\n  FAB --> FTB[Microsoft Fabric Toolbox catalog]\n  FAB --> FCICD[fabric-cicd]\n  FAB --> FEXT[Fabric Extensibility Toolkit]\n  PBI --> AG[Power BI Agentic Development]\n  PBI --> PMG[MacGuyver Toolbox]\n  PBI --> EXTUI[Specialized external tools]\n  DBX --> DBXE[Official Databricks extension]\n  DBX --> DBCLI[Databricks CLI / Bundles]\n  DBX --> DBPS[DatabricksPS optional]\n  INF --> TF[Terraform / OpenTofu]\n  INF --> K8S[Kubernetes / Docker]\n  INF --> SSH[Remote SSH]\n  PROJ --> FOIL[FOIL profile]\n  FOIL --> FAB\n  FOIL --> DBX\n  FOIL --> INF",
+  "mermaid": "flowchart TB\n  CP[Data Platform VS Code Control Plane]\n  CP --> FAB[Fabric adapter]\n  CP --> PBI[Power BI adapter]\n  CP --> DBX[Databricks adapter]\n  CP --> OBS[Observability adapter]\n  CP --> INF[Infrastructure adapter]\n  CP --> PROJ[Project profiles]\n  FAB --> MSF[Microsoft Fabric extension]\n  FAB --> FSO[Fabric Studio extension]\n  FAB --> OL[OneLake-VSCode]\n  FAB --> FCLI[Fabric CLI]\n  FAB --> FTB[Fabric Toolbox gallery]\n  FAB --> FCICD[fabric-cicd]\n  FAB --> FEXT[Fabric Extensibility Toolkit]\n  PBI --> AG[Power BI Agentic Development]\n  PBI --> PMG[MacGuyver Toolbox]\n  PBI --> EXTUI[Specialized external tools]\n  DBX --> DBXE[Official Databricks extension]\n  DBX --> DBCLI[Databricks CLI / Bundles]\n  DBX --> DBPS[DatabricksPS optional]\n  OBS --> GCX[gcx]\n  OBS --> GSDK[Grafana Foundation SDK]\n  OBS --> GIT[Grafana Git Sync]\n  OBS --> GP[Grafana provider]\n  GP --> TF[OpenTofu / Terraform]\n  INF --> TF\n  INF --> K8S[Kubernetes / Docker]\n  INF --> SSH[Remote SSH]\n  PROJ --> FOIL[FOIL profile]\n  FOIL --> FAB\n  FOIL --> DBX\n  FOIL --> OBS\n  FOIL --> INF",
   "next_actions": [
     "Create a dedicated implementation repository for the global VS Code control plane when coding begins; do not repurpose Datapass Workbench.",
-    "Build the shell first: project selector, tool detection, galaxy/control-panel view and command routing.",
-    "Implement Fabric adapter first because existing Fabric tooling is fragmented across official/community extensions, libraries and toolboxes.",
-    "Keep Fabric Studio and OneLake-VSCode as peer extensions and integrate by discovery/commands rather than forking.",
-    "Create a curated Fabric Toolbox catalog instead of cloning every Microsoft Fabric Toolbox asset into the extension.",
-    "Migrate only useful generic actions from fabricdatapasstoolbox/fabric-toolbox_J into the Fabric adapter.",
-    "Implement FOIL as the first project profile and use it to prove Databricks/Fabric/Oracle VM orchestration.",
-    "Do not start a separate Power BI VSIX until a capability cannot reasonably live as an adapter or external specialized tool."
+    "Use one VSIX with modular internal packages first: core shell plus Fabric, Power BI, Databricks, Observability and Infrastructure adapters.",
+    "Build the shell first: project selector, installed-tool detection, galaxy/control-panel view, command routing and task execution.",
+    "Implement Fabric adapter deeply: Microsoft Fabric extension + Fabric Studio + OneLake as peers, Fabric CLI/fabric-cicd as execution surfaces, and a manifest-driven Fabric Toolbox gallery.",
+    "Do not copy all Fabric Toolbox code into the extension; classify each asset as open/clone/scaffold/run/deploy/read and preserve upstream provenance.",
+    "Implement Grafana as an Observability-as-Code adapter using gcx, Foundation SDK, Git Sync and OpenTofu/Terraform provider workflows rather than inventing a dashboard editor.",
+    "Implement FOIL as the first project profile and use it to prove Databricks/Fabric/Oracle VM/Grafana orchestration.",
+    "Do not start separate platform VSIX packages until a real independent distribution/runtime/security boundary appears."
   ]
 }
