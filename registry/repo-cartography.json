@@ -213,15 +213,17 @@
       "role": "canonical Data Platform VS Code control-plane implementation",
       "category": "developer_control_plane",
       "authority": "main",
-      "state": "PASS1_MERGED_CI_GREEN_LOCAL_SMOKE_TEST_PENDING",
+      "state": "V0_5_0_MERGED_CI_GREEN_DESKTOP_SMOKE_TEST_PENDING",
       "replaces_scope_of": [
         "general Fabric companion UI growth in fabricdatapasstoolbox",
         "FOIL-specific vendor-extension forking as the central IDE strategy"
       ],
-      "currentHead": "74e60775cd708ab7de0f309c8a414d74a8cf7998",
+      "currentHead": "1b3b768fe4d6d5aa3e3fdef4b0cc9943c2aac3f2",
       "pullRequest": 1,
-      "ciRun": 35851049116,
-      "vsixArtifactId": 10744998588
+      "ciRun": 35859398989,
+      "vsixArtifactId": 10748563407,
+      "version": "0.5.0",
+      "vsixDigest": "sha256:d668666b9723e7841077b482a7ee67ccfca000f9e06f8dca17f44fa68caee5b9"
     }
   ],
   "historical_overlap_candidates": [
