@@ -3,10 +3,10 @@
   "updated_at": "2026-09-23",
   "id": "data_platform_vscode_control_plane",
   "name": "Data Platform VS Code Control Plane",
-  "status": "architecture_defined_registry_started",
+  "status": "implementation_handoff_seeded",
   "authority": {
     "global_registry": "julian-passebecq/dataprojects",
-    "implementation_truth": "owning repository",
+    "implementation_truth": "julian-passebecq/datapass-vscode",
     "note": "This is not the Datapass Workbench product. It is a developer control plane for VS Code."
   },
   "objective": "Provide one VS Code-native control panel for project context, platform navigation, tool discovery, status and safe command orchestration across Microsoft Fabric, Power BI, Databricks, infrastructure and project-specific profiles such as FOIL.",
@@ -398,13 +398,22 @@
   },
   "mermaid": "flowchart TB\n  CP[Data Platform VS Code Control Plane]\n  CP --> FAB[Fabric adapter]\n  CP --> PBI[Power BI adapter]\n  CP --> DBX[Databricks adapter]\n  CP --> OBS[Observability adapter]\n  CP --> INF[Infrastructure adapter]\n  CP --> PROJ[Project profiles]\n  FAB --> MSF[Microsoft Fabric extension]\n  FAB --> FSO[Fabric Studio extension]\n  FAB --> OL[OneLake-VSCode]\n  FAB --> FCLI[Fabric CLI]\n  FAB --> FTB[Fabric Toolbox gallery]\n  FAB --> FCICD[fabric-cicd]\n  FAB --> FEXT[Fabric Extensibility Toolkit]\n  PBI --> AG[Power BI Agentic Development]\n  PBI --> PMG[MacGuyver Toolbox]\n  PBI --> EXTUI[Specialized external tools]\n  DBX --> DBXE[Official Databricks extension]\n  DBX --> DBCLI[Databricks CLI / Bundles]\n  DBX --> DBPS[DatabricksPS optional]\n  OBS --> GCX[gcx]\n  OBS --> GSDK[Grafana Foundation SDK]\n  OBS --> GIT[Grafana Git Sync]\n  OBS --> GP[Grafana provider]\n  GP --> TF[OpenTofu / Terraform]\n  INF --> TF\n  INF --> K8S[Kubernetes / Docker]\n  INF --> SSH[Remote SSH]\n  PROJ --> FOIL[FOIL profile]\n  FOIL --> FAB\n  FOIL --> DBX\n  FOIL --> OBS\n  FOIL --> INF",
   "next_actions": [
-    "Create a dedicated implementation repository for the global VS Code control plane when coding begins; do not repurpose Datapass Workbench.",
-    "Use one VSIX with modular internal packages first: core shell plus Fabric, Power BI, Databricks, Observability and Infrastructure adapters.",
-    "Build the shell first: project selector, installed-tool detection, galaxy/control-panel view, command routing and task execution.",
-    "Implement Fabric adapter deeply: Microsoft Fabric extension + Fabric Studio + OneLake as peers, Fabric CLI/fabric-cicd as execution surfaces, and a manifest-driven Fabric Toolbox gallery.",
-    "Do not copy all Fabric Toolbox code into the extension; classify each asset as open/clone/scaffold/run/deploy/read and preserve upstream provenance.",
-    "Implement Grafana as an Observability-as-Code adapter using gcx, Foundation SDK, Git Sync and OpenTofu/Terraform provider workflows rather than inventing a dashboard editor.",
-    "Implement FOIL as the first project profile and use it to prove Databricks/Fabric/Oracle VM/Grafana orchestration.",
-    "Do not start separate platform VSIX packages until a real independent distribution/runtime/security boundary appears."
-  ]
+    "Implement Pass 1 in julian-passebecq/datapass-vscode using the seeded handoff. Return a complete repository ZIP and VSIX if the coding agent cannot push.",
+    "Keep one VSIX with modular Fabric, Power BI, Databricks, Observability and Infrastructure adapters.",
+    "Consolidate useful code from fabricdatapasstoolbox/codex/initial-vscode-companion into the Fabric adapter rather than continuing a second Fabric companion product.",
+    "Use foil-ai-extension only as a lightweight project-binding donor and implement FOIL as profile #1.",
+    "Keep the official Databricks extension as primary client; freeze databricks-vscode-foil as reference-only.",
+    "Preserve Grafana as observability-as-code and infrastructure tools as peer tooling."
+  ],
+  "implementation": {
+    "repo": "julian-passebecq/datapass-vscode",
+    "branch": "main",
+    "state": "HANDOFF_SEEDED_PRO_PASS1_PENDING",
+    "handoff_paths": [
+      "handoff/PRO_MASTER_PROMPT.md",
+      "handoff/ARCHITECTURE_LOCK.md",
+      "handoff/SOURCE_MAP.md",
+      "handoff/PASS1_ACCEPTANCE.md"
+    ]
+  }
 }
