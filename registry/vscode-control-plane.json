@@ -3,7 +3,7 @@
   "updated_at": "2026-09-23",
   "id": "data_platform_vscode_control_plane",
   "name": "Data Platform VS Code Control Plane",
-  "status": "V0_7_0_MERGED_CI_GREEN_DESKTOP_SMOKE_TEST_PENDING",
+  "status": "V0_8_0_MERGED_CI_GREEN_DESKTOP_SMOKE_TEST_PENDING",
   "authority": {
     "global_registry": "julian-passebecq/dataprojects",
     "implementation_truth": "julian-passebecq/datapass-vscode",
@@ -398,19 +398,19 @@
   },
   "mermaid": "flowchart TB\n  CP[Data Platform VS Code Control Plane]\n  CP --> FAB[Fabric adapter]\n  CP --> PBI[Power BI adapter]\n  CP --> DBX[Databricks adapter]\n  CP --> OBS[Observability adapter]\n  CP --> INF[Infrastructure adapter]\n  CP --> PROJ[Project profiles]\n  FAB --> MSF[Microsoft Fabric extension]\n  FAB --> FSO[Fabric Studio extension]\n  FAB --> OL[OneLake-VSCode]\n  FAB --> FCLI[Fabric CLI]\n  FAB --> FTB[Fabric Toolbox gallery]\n  FAB --> FCICD[fabric-cicd]\n  FAB --> FEXT[Fabric Extensibility Toolkit]\n  PBI --> AG[Power BI Agentic Development]\n  PBI --> PMG[MacGuyver Toolbox]\n  PBI --> EXTUI[Specialized external tools]\n  DBX --> DBXE[Official Databricks extension]\n  DBX --> DBCLI[Databricks CLI / Bundles]\n  DBX --> DBPS[DatabricksPS optional]\n  OBS --> GCX[gcx]\n  OBS --> GSDK[Grafana Foundation SDK]\n  OBS --> GIT[Grafana Git Sync]\n  OBS --> GP[Grafana provider]\n  GP --> TF[OpenTofu / Terraform]\n  INF --> TF\n  INF --> K8S[Kubernetes / Docker]\n  INF --> SSH[Remote SSH]\n  PROJ --> FOIL[FOIL profile]\n  FOIL --> FAB\n  FOIL --> DBX\n  FOIL --> OBS\n  FOIL --> INF",
   "next_actions": [
-    "Install the v0.7.0 VSIX from main CI and smoke-test Galaxy layout, peer-extension detection and command surfaces in desktop VS Code.",
-    "Load/create .datapass/project.json for FOIL and verify the real Fabric workspace identity through official Fabric CLI before writing it to project state.",
-    "Run Fabric environment summary and CI preflight in a non-production context; keep deploy command review-only until manually validated.",
-    "Build/start one curated Fabric/Power BI MCP server and verify VS Code integration.",
-    "Exercise the Power BI PBIP/TMDL/PBIR source detection and selectively install only the agentic plugins actually needed.",
-    "Use sanitized environment snapshots for debugging/handoffs without exposing local paths or credentials."
+    "Install the v0.8.0 VSIX from main CI and inspect the health-first Galaxy in desktop VS Code.",
+    "Use the attention queue and All/Ready/Partial/Attention filters to verify real sidebar density and grouping.",
+    "Create/load the FOIL .datapass/project.json and verify real Fabric workspace identity through official Fabric CLI before persisting it.",
+    "Run the read-only Fabric environment summary and manual CI preflight in a non-production context.",
+    "Build/start one curated MCP server and exercise PBIP/TMDL/PBIR plus Copilot CLI detection.",
+    "Use the sanitized environment snapshot, including safe health metadata, for the next debugging handoff."
   ],
   "implementation": {
     "repo": "julian-passebecq/datapass-vscode",
     "branch": "main",
-    "version": "0.7.0",
-    "state": "V0_7_0_MERGED_CI_GREEN",
-    "currentHead": "b8051f6c5650b1c6015ba47b34685670b3b26f5c",
+    "version": "0.8.0",
+    "state": "V0_8_0_MERGED_CI_GREEN",
+    "currentHead": "9ef9034ec5a60635403fe35304915a5d00743a8b",
     "passes": [
       {
         "pass": 1,
@@ -450,15 +450,15 @@
     ],
     "ci": {
       "workflow": "extension-ci",
-      "run_id": 35867431100,
+      "run_id": 35869606426,
       "conclusion": "success"
     },
     "vsix": {
       "artifact_name": "datapass-vscode-vsix",
-      "artifact_id": 10752911602,
-      "size_bytes": 70192,
-      "digest": "sha256:aa0b9ee155ab75a50bd03ed875973e03e3d984d515c93767e925f804abff6a50",
-      "expires_at": "2026-12-22T13:29:33Z"
+      "artifact_id": 10754990073,
+      "size_bytes": 80497,
+      "digest": "sha256:b77c8be959af0ee024d56b0eea861f8c8fe13dd7cc5d8433962a47efd45e6a41",
+      "expires_at": "2026-12-22T13:48:03Z"
     }
   }
 }
