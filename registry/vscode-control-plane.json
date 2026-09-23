@@ -3,7 +3,7 @@
   "updated_at": "2026-09-23",
   "id": "data_platform_vscode_control_plane",
   "name": "Data Platform VS Code Control Plane",
-  "status": "V0_5_0_MERGED_CI_GREEN_DESKTOP_SMOKE_TEST_PENDING",
+  "status": "V0_7_0_MERGED_CI_GREEN_DESKTOP_SMOKE_TEST_PENDING",
   "authority": {
     "global_registry": "julian-passebecq/dataprojects",
     "implementation_truth": "julian-passebecq/datapass-vscode",
@@ -398,18 +398,19 @@
   },
   "mermaid": "flowchart TB\n  CP[Data Platform VS Code Control Plane]\n  CP --> FAB[Fabric adapter]\n  CP --> PBI[Power BI adapter]\n  CP --> DBX[Databricks adapter]\n  CP --> OBS[Observability adapter]\n  CP --> INF[Infrastructure adapter]\n  CP --> PROJ[Project profiles]\n  FAB --> MSF[Microsoft Fabric extension]\n  FAB --> FSO[Fabric Studio extension]\n  FAB --> OL[OneLake-VSCode]\n  FAB --> FCLI[Fabric CLI]\n  FAB --> FTB[Fabric Toolbox gallery]\n  FAB --> FCICD[fabric-cicd]\n  FAB --> FEXT[Fabric Extensibility Toolkit]\n  PBI --> AG[Power BI Agentic Development]\n  PBI --> PMG[MacGuyver Toolbox]\n  PBI --> EXTUI[Specialized external tools]\n  DBX --> DBXE[Official Databricks extension]\n  DBX --> DBCLI[Databricks CLI / Bundles]\n  DBX --> DBPS[DatabricksPS optional]\n  OBS --> GCX[gcx]\n  OBS --> GSDK[Grafana Foundation SDK]\n  OBS --> GIT[Grafana Git Sync]\n  OBS --> GP[Grafana provider]\n  GP --> TF[OpenTofu / Terraform]\n  INF --> TF\n  INF --> K8S[Kubernetes / Docker]\n  INF --> SSH[Remote SSH]\n  PROJ --> FOIL[FOIL profile]\n  FOIL --> FAB\n  FOIL --> DBX\n  FOIL --> OBS\n  FOIL --> INF",
   "next_actions": [
-    "Install the v0.5.0 CI-generated VSIX from main and smoke-test Galaxy layout/detection in the user's desktop VS Code.",
-    "Create or load a real .datapass/project.json and bind FOIL local repositories; keep cloud identities unknown until verified.",
-    "Run Fabric CLI auth status/list workspaces and record the real FOIL Fabric workspace name only after direct verification.",
-    "Build/configure one curated Fabric Toolbox MCP server locally and verify it starts through VS Code.",
-    "Run a non-production Fabric Assessment Tool test; do not infer cloud runtime success from CI.",
-    "Use the sanitized environment snapshot for debugging/handoffs without exposing local paths or credentials."
+    "Install the v0.7.0 VSIX from main CI and smoke-test Galaxy layout, peer-extension detection and command surfaces in desktop VS Code.",
+    "Load/create .datapass/project.json for FOIL and verify the real Fabric workspace identity through official Fabric CLI before writing it to project state.",
+    "Run Fabric environment summary and CI preflight in a non-production context; keep deploy command review-only until manually validated.",
+    "Build/start one curated Fabric/Power BI MCP server and verify VS Code integration.",
+    "Exercise the Power BI PBIP/TMDL/PBIR source detection and selectively install only the agentic plugins actually needed.",
+    "Use sanitized environment snapshots for debugging/handoffs without exposing local paths or credentials."
   ],
   "implementation": {
     "repo": "julian-passebecq/datapass-vscode",
     "branch": "main",
-    "version": "0.5.0",
-    "state": "V0_5_0_MERGED_CI_GREEN",
+    "version": "0.7.0",
+    "state": "V0_7_0_MERGED_CI_GREEN",
+    "currentHead": "b8051f6c5650b1c6015ba47b34685670b3b26f5c",
     "passes": [
       {
         "pass": 1,
@@ -435,20 +436,29 @@
         "pass": 5,
         "commit": "1b3b768fe4d6d5aa3e3fdef4b0cc9943c2aac3f2",
         "summary": "sanitized environment snapshot"
+      },
+      {
+        "pass": 6,
+        "commit": "43fa49b42ca1281fb6779e53a03aa366b5b09cf2",
+        "summary": "Fabric environment summary + review-first CI/CD"
+      },
+      {
+        "pass": 7,
+        "commit": "b8051f6c5650b1c6015ba47b34685670b3b26f5c",
+        "summary": "Power BI agentic engineering Galaxy"
       }
     ],
-    "currentHead": "1b3b768fe4d6d5aa3e3fdef4b0cc9943c2aac3f2",
     "ci": {
       "workflow": "extension-ci",
-      "run_id": 35859398989,
+      "run_id": 35867431100,
       "conclusion": "success"
     },
     "vsix": {
       "artifact_name": "datapass-vscode-vsix",
-      "artifact_id": 10748563407,
-      "size_bytes": 58724,
-      "digest": "sha256:d668666b9723e7841077b482a7ee67ccfca000f9e06f8dca17f44fa68caee5b9",
-      "expires_at": "2026-12-22T12:15:56Z"
+      "artifact_id": 10752911602,
+      "size_bytes": 70192,
+      "digest": "sha256:aa0b9ee155ab75a50bd03ed875973e03e3d984d515c93767e925f804abff6a50",
+      "expires_at": "2026-12-22T13:29:33Z"
     }
   }
 }
