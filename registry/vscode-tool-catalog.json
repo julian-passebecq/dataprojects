@@ -1,13 +1,14 @@
 {
   "schema_version": "1.0",
   "updated_at": "2026-09-23",
-  "scope": "VS Code-centric data-platform tooling catalog for Fabric, Power BI, Databricks, infrastructure and project adapters.",
+  "scope": "VS Code-centric data-platform tooling catalog for Fabric, Power BI, Databricks, observability/Grafana, infrastructure and project adapters.",
   "rules": [
     "Prefer vendor/community tooling when it already provides the required capability.",
     "A VS Code peer extension remains independently installable and usable; the control plane may detect/focus/invoke documented commands.",
     "CLI/library/toolbox assets are surfaced through tasks, terminals, runbooks or curated actions rather than wrapped into a new extension by default.",
     "Project-specific profiles may live in separate repositories, but vendor client stacks should not be forked without a strong technical reason.",
-    "Specialized heavy UI may remain external when reproducing it inside VS Code would reduce capability."
+    "Specialized heavy UI may remain external when reproducing it inside VS Code would reduce capability.",
+    "A platform adapter may deeply integrate a toolbox through manifest-driven commands/tasks without becoming a separate VSIX."
   ],
   "items": [
     {
@@ -200,6 +201,104 @@
       "integration": "foil_project_adapter_candidate",
       "decision": "EVOLVE_OR_EXTRACT_PROFILE",
       "build_gap": "FOIL-specific navigation/context should become the first project profile for the global control plane."
+    },
+    {
+      "id": "microsoft_fabric_vscode",
+      "repo": null,
+      "domain": "fabric",
+      "kind": "vendor_vscode_extension",
+      "integration": "peer_extension",
+      "observed_capabilities": [
+        "Fabric authentication",
+        "workspace management",
+        "programmatic item and Git-oriented developer workflows"
+      ],
+      "decision": "PRIMARY_VENDOR_EXTENSION",
+      "build_gap": "Complement with project context, CLI/CI-CD and toolbox actions rather than replacing it."
+    },
+    {
+      "id": "microsoft_fabric_cli",
+      "repo": null,
+      "domain": "fabric",
+      "kind": "vendor_cli",
+      "integration": "task_cli",
+      "observed_capabilities": [
+        "workspace/item automation",
+        "item definition import/export",
+        "Git/CI-CD workflows",
+        "deploy automation"
+      ],
+      "decision": "PRIMARY_AUTOMATION_SURFACE",
+      "build_gap": "Expose project-aware commands/tasks from the Fabric adapter."
+    },
+    {
+      "id": "grafana_gcx",
+      "repo": null,
+      "domain": "observability",
+      "kind": "vendor_cli",
+      "integration": "task_cli_agentic",
+      "observed_capabilities": [
+        "resource management",
+        "multi-environment contexts",
+        "GitOps",
+        "dashboard development server",
+        "agent-friendly workflows"
+      ],
+      "decision": "PRIMARY_GRAFANA_CLI",
+      "build_gap": "Use gcx; record grafanactl as deprecated compatibility only."
+    },
+    {
+      "id": "grafana_foundation_sdk",
+      "repo": "grafana/grafana-foundation-sdk",
+      "domain": "observability",
+      "kind": "vendor_sdk",
+      "integration": "code_generation",
+      "observed_capabilities": [
+        "strongly typed dashboard generation",
+        "Go and TypeScript workflows"
+      ],
+      "decision": "USE",
+      "build_gap": "Scaffold dashboard-as-code projects; prefer TypeScript when it reduces stack fragmentation."
+    },
+    {
+      "id": "grafana_git_sync",
+      "repo": null,
+      "domain": "observability",
+      "kind": "gitops",
+      "integration": "optional_git_sync",
+      "decision": "USE_OPTIONALLY",
+      "build_gap": "Offer as an alternative deployment path when Git-native synchronization is preferred."
+    },
+    {
+      "id": "grafana_provider",
+      "repo": "grafana/terraform-provider-grafana",
+      "domain": "observability",
+      "kind": "iac_provider",
+      "integration": "opentofu_terraform",
+      "observed_capabilities": [
+        "dashboards",
+        "folders",
+        "data sources",
+        "alerts and other Grafana resources"
+      ],
+      "decision": "USE_WITH_SMOKE_TEST",
+      "build_gap": "Run with OpenTofu/Terraform through the infrastructure adapter; pin provider versions."
+    },
+    {
+      "id": "opentofu_vscode",
+      "repo": null,
+      "domain": "infrastructure",
+      "kind": "official_vscode_extension",
+      "integration": "peer_extension",
+      "observed_capabilities": [
+        "syntax highlighting",
+        "IntelliSense",
+        "navigation",
+        "formatting",
+        "module explorer"
+      ],
+      "decision": "USE",
+      "build_gap": "Do not rebuild OpenTofu editor support."
     }
   ]
 }
