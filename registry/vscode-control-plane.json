@@ -3,7 +3,7 @@
   "updated_at": "2026-09-23",
   "id": "data_platform_vscode_control_plane",
   "name": "Data Platform VS Code Control Plane",
-  "status": "PASS1_MERGED_CI_GREEN_LOCAL_SMOKE_TEST_PENDING",
+  "status": "V0_5_0_MERGED_CI_GREEN_DESKTOP_SMOKE_TEST_PENDING",
   "authority": {
     "global_registry": "julian-passebecq/dataprojects",
     "implementation_truth": "julian-passebecq/datapass-vscode",
@@ -398,35 +398,57 @@
   },
   "mermaid": "flowchart TB\n  CP[Data Platform VS Code Control Plane]\n  CP --> FAB[Fabric adapter]\n  CP --> PBI[Power BI adapter]\n  CP --> DBX[Databricks adapter]\n  CP --> OBS[Observability adapter]\n  CP --> INF[Infrastructure adapter]\n  CP --> PROJ[Project profiles]\n  FAB --> MSF[Microsoft Fabric extension]\n  FAB --> FSO[Fabric Studio extension]\n  FAB --> OL[OneLake-VSCode]\n  FAB --> FCLI[Fabric CLI]\n  FAB --> FTB[Fabric Toolbox gallery]\n  FAB --> FCICD[fabric-cicd]\n  FAB --> FEXT[Fabric Extensibility Toolkit]\n  PBI --> AG[Power BI Agentic Development]\n  PBI --> PMG[MacGuyver Toolbox]\n  PBI --> EXTUI[Specialized external tools]\n  DBX --> DBXE[Official Databricks extension]\n  DBX --> DBCLI[Databricks CLI / Bundles]\n  DBX --> DBPS[DatabricksPS optional]\n  OBS --> GCX[gcx]\n  OBS --> GSDK[Grafana Foundation SDK]\n  OBS --> GIT[Grafana Git Sync]\n  OBS --> GP[Grafana provider]\n  GP --> TF[OpenTofu / Terraform]\n  INF --> TF\n  INF --> K8S[Kubernetes / Docker]\n  INF --> SSH[Remote SSH]\n  PROJ --> FOIL[FOIL profile]\n  FOIL --> FAB\n  FOIL --> DBX\n  FOIL --> OBS\n  FOIL --> INF",
   "next_actions": [
-    "Install the CI-generated datapass-vscode-vsix from the main run and smoke-test the Galaxy in the user's desktop VS Code with the user's real peer extensions and CLIs.",
-    "After local smoke test, deepen the Fabric adapter by migrating additional proven guarded runners and project-state concepts from fabricdatapasstoolbox/codex/initial-vscode-companion.",
-    "Add a generic local project manifest/profile format without secrets, then bind FOIL as profile #1 to foil-control-v1 and foil_databrick_dab.",
-    "Run live Fabric/Databricks/Grafana/Oracle validations only after local extension smoke-test; do not infer runtime success from CI."
+    "Install the v0.5.0 CI-generated VSIX from main and smoke-test Galaxy layout/detection in the user's desktop VS Code.",
+    "Create or load a real .datapass/project.json and bind FOIL local repositories; keep cloud identities unknown until verified.",
+    "Run Fabric CLI auth status/list workspaces and record the real FOIL Fabric workspace name only after direct verification.",
+    "Build/configure one curated Fabric Toolbox MCP server locally and verify it starts through VS Code.",
+    "Run a non-production Fabric Assessment Tool test; do not infer cloud runtime success from CI.",
+    "Use the sanitized environment snapshot for debugging/handoffs without exposing local paths or credentials."
   ],
   "implementation": {
     "repo": "julian-passebecq/datapass-vscode",
     "branch": "main",
-    "state": "PASS1_MERGED_CI_GREEN",
-    "pull_request": 1,
-    "merge_commit": "74e60775cd708ab7de0f309c8a414d74a8cf7998",
+    "version": "0.5.0",
+    "state": "V0_5_0_MERGED_CI_GREEN",
+    "passes": [
+      {
+        "pass": 1,
+        "commit": "74e60775cd708ab7de0f309c8a414d74a8cf7998",
+        "summary": "control-plane shell + adapters + FOIL profile"
+      },
+      {
+        "pass": 2,
+        "commit": "34a663156201f1f9593bef4f360c8391839e6c6c",
+        "summary": "portable project manifest + Fabric Toolbox Galaxy"
+      },
+      {
+        "pass": 3,
+        "commit": "448c024127d94a7c7d962dcf9faf98beebc3dd06",
+        "summary": "Fabric Assessment Tool + MCP orchestration"
+      },
+      {
+        "pass": 4,
+        "commit": "bd3f4141e632dbd130b0501a3fb2b37aee8d3937",
+        "summary": "official Fabric CLI read-only control"
+      },
+      {
+        "pass": 5,
+        "commit": "1b3b768fe4d6d5aa3e3fdef4b0cc9943c2aac3f2",
+        "summary": "sanitized environment snapshot"
+      }
+    ],
+    "currentHead": "1b3b768fe4d6d5aa3e3fdef4b0cc9943c2aac3f2",
     "ci": {
       "workflow": "extension-ci",
-      "run_id": 35851049116,
-      "conclusion": "success",
-      "verified_head": "74e60775cd708ab7de0f309c8a414d74a8cf7998"
+      "run_id": 35859398989,
+      "conclusion": "success"
     },
     "vsix": {
       "artifact_name": "datapass-vscode-vsix",
-      "artifact_id": 10744998588,
-      "size_bytes": 33509,
-      "digest": "sha256:43d5b38f5f97b725cf1d6680c65744799ed885bf9f2e56805307acff68a1d1cb",
-      "expires_at": "2026-12-22T10:50:06Z"
-    },
-    "handoff_paths": [
-      "handoff/PRO_MASTER_PROMPT.md",
-      "handoff/ARCHITECTURE_LOCK.md",
-      "handoff/SOURCE_MAP.md",
-      "handoff/PASS1_ACCEPTANCE.md"
-    ]
+      "artifact_id": 10748563407,
+      "size_bytes": 58724,
+      "digest": "sha256:d668666b9723e7841077b482a7ee67ccfca000f9e06f8dca17f44fa68caee5b9",
+      "expires_at": "2026-12-22T12:15:56Z"
+    }
   }
 }
