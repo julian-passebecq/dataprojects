@@ -3,7 +3,7 @@
   "updated_at": "2026-09-23",
   "id": "data_platform_vscode_control_plane",
   "name": "Data Platform VS Code Control Plane",
-  "status": "implementation_handoff_seeded",
+  "status": "PASS1_MERGED_CI_GREEN_LOCAL_SMOKE_TEST_PENDING",
   "authority": {
     "global_registry": "julian-passebecq/dataprojects",
     "implementation_truth": "julian-passebecq/datapass-vscode",
@@ -398,17 +398,30 @@
   },
   "mermaid": "flowchart TB\n  CP[Data Platform VS Code Control Plane]\n  CP --> FAB[Fabric adapter]\n  CP --> PBI[Power BI adapter]\n  CP --> DBX[Databricks adapter]\n  CP --> OBS[Observability adapter]\n  CP --> INF[Infrastructure adapter]\n  CP --> PROJ[Project profiles]\n  FAB --> MSF[Microsoft Fabric extension]\n  FAB --> FSO[Fabric Studio extension]\n  FAB --> OL[OneLake-VSCode]\n  FAB --> FCLI[Fabric CLI]\n  FAB --> FTB[Fabric Toolbox gallery]\n  FAB --> FCICD[fabric-cicd]\n  FAB --> FEXT[Fabric Extensibility Toolkit]\n  PBI --> AG[Power BI Agentic Development]\n  PBI --> PMG[MacGuyver Toolbox]\n  PBI --> EXTUI[Specialized external tools]\n  DBX --> DBXE[Official Databricks extension]\n  DBX --> DBCLI[Databricks CLI / Bundles]\n  DBX --> DBPS[DatabricksPS optional]\n  OBS --> GCX[gcx]\n  OBS --> GSDK[Grafana Foundation SDK]\n  OBS --> GIT[Grafana Git Sync]\n  OBS --> GP[Grafana provider]\n  GP --> TF[OpenTofu / Terraform]\n  INF --> TF\n  INF --> K8S[Kubernetes / Docker]\n  INF --> SSH[Remote SSH]\n  PROJ --> FOIL[FOIL profile]\n  FOIL --> FAB\n  FOIL --> DBX\n  FOIL --> OBS\n  FOIL --> INF",
   "next_actions": [
-    "Implement Pass 1 in julian-passebecq/datapass-vscode using the seeded handoff. Return a complete repository ZIP and VSIX if the coding agent cannot push.",
-    "Keep one VSIX with modular Fabric, Power BI, Databricks, Observability and Infrastructure adapters.",
-    "Consolidate useful code from fabricdatapasstoolbox/codex/initial-vscode-companion into the Fabric adapter rather than continuing a second Fabric companion product.",
-    "Use foil-ai-extension only as a lightweight project-binding donor and implement FOIL as profile #1.",
-    "Keep the official Databricks extension as primary client; freeze databricks-vscode-foil as reference-only.",
-    "Preserve Grafana as observability-as-code and infrastructure tools as peer tooling."
+    "Install the CI-generated datapass-vscode-vsix from the main run and smoke-test the Galaxy in the user's desktop VS Code with the user's real peer extensions and CLIs.",
+    "After local smoke test, deepen the Fabric adapter by migrating additional proven guarded runners and project-state concepts from fabricdatapasstoolbox/codex/initial-vscode-companion.",
+    "Add a generic local project manifest/profile format without secrets, then bind FOIL as profile #1 to foil-control-v1 and foil_databrick_dab.",
+    "Run live Fabric/Databricks/Grafana/Oracle validations only after local extension smoke-test; do not infer runtime success from CI."
   ],
   "implementation": {
     "repo": "julian-passebecq/datapass-vscode",
     "branch": "main",
-    "state": "HANDOFF_SEEDED_PRO_PASS1_PENDING",
+    "state": "PASS1_MERGED_CI_GREEN",
+    "pull_request": 1,
+    "merge_commit": "74e60775cd708ab7de0f309c8a414d74a8cf7998",
+    "ci": {
+      "workflow": "extension-ci",
+      "run_id": 35851049116,
+      "conclusion": "success",
+      "verified_head": "74e60775cd708ab7de0f309c8a414d74a8cf7998"
+    },
+    "vsix": {
+      "artifact_name": "datapass-vscode-vsix",
+      "artifact_id": 10744998588,
+      "size_bytes": 33509,
+      "digest": "sha256:43d5b38f5f97b725cf1d6680c65744799ed885bf9f2e56805307acff68a1d1cb",
+      "expires_at": "2026-12-22T10:50:06Z"
+    },
     "handoff_paths": [
       "handoff/PRO_MASTER_PROMPT.md",
       "handoff/ARCHITECTURE_LOCK.md",
