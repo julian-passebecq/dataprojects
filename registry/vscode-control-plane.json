@@ -1,0 +1,287 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-09-23",
+  "id": "data_platform_vscode_control_plane",
+  "name": "Data Platform VS Code Control Plane",
+  "status": "architecture_defined_registry_started",
+  "authority": {
+    "global_registry": "julian-passebecq/dataprojects",
+    "implementation_truth": "owning repository",
+    "note": "This is not the Datapass Workbench product. It is a developer control plane for VS Code."
+  },
+  "objective": "Provide one VS Code-native control panel for project context, platform navigation, tool discovery, status and safe command orchestration across Microsoft Fabric, Power BI, Databricks, infrastructure and project-specific profiles such as FOIL.",
+  "architecture_decision": {
+    "default_packaging": "one_vscode_extension_with_internal_adapters",
+    "separate_extension_rule": "Split a domain into a separate VSIX only if it needs an independent release/security boundary, incompatible activation/runtime dependencies, or standalone distribution to users who do not need the core shell.",
+    "vendor_rule": "Do not rebuild vendor/community capabilities that already exist. Detect, launch and compose supported extensions/CLIs/APIs instead.",
+    "project_rule": "Project-specific logic is a profile/adapter. It may live in a separate repo, but it must not become a second vendor client stack.",
+    "specialized_ui_rule": "Keep genuinely specialized heavy UI tools external when VS Code adds little value; launch them from the control plane when useful."
+  },
+  "layers": [
+    {
+      "id": "core_shell",
+      "responsibility": [
+        "global control panel / galaxy view",
+        "project selector and project profiles",
+        "installed-tool detection",
+        "open/focus relevant VS Code views",
+        "command and task routing",
+        "status/health summaries",
+        "links to source repos, docs and runbooks"
+      ]
+    },
+    {
+      "id": "platform_adapters",
+      "modules": [
+        "fabric",
+        "powerbi",
+        "databricks",
+        "infrastructure",
+        "oracle_vm"
+      ],
+      "rule": "Adapters contain integration logic, not duplicated vendor implementations."
+    },
+    {
+      "id": "peer_vscode_extensions",
+      "rule": "Official/community extensions remain independently installed and usable. The control plane may detect and invoke documented VS Code commands when stable."
+    },
+    {
+      "id": "cli_sdk_tooling",
+      "rule": "Libraries, CLIs, PowerShell modules and SDKs are invoked through tasks/terminals/scripts or project workflows; they do not require a wrapper extension by default."
+    },
+    {
+      "id": "project_profiles",
+      "examples": [
+        "FOIL",
+        "Contoso"
+      ],
+      "rule": "Profiles bind project repositories, environments, runbooks and allowed actions to the generic adapters."
+    }
+  ],
+  "platforms": {
+    "fabric": {
+      "strategy": "compose_existing_tools_then_fill_real_gaps",
+      "tools": [
+        {
+          "repo": "gbrueckl/FabricStudio",
+          "kind": "community_vscode_extension",
+          "extension_id": "GerhardBrueckl.fabricstudio",
+          "decision": "use_directly_as_peer_extension",
+          "capabilities_observed": [
+            "Fabric workspace/item browser",
+            "Fabric REST API notebook",
+            "fabric:// file system provider",
+            "publish/update Fabric items",
+            "Spark notebook execution",
+            "Fabric Git integration",
+            "deployment pipeline management",
+            "TMDL/PBIR-related Power BI item workflows"
+          ],
+          "control_plane_role": "Detect installation; provide open/focus shortcuts and project-scoped entry points. Do not recreate its workspace browser."
+        },
+        {
+          "repo": "gbrueckl/OneLake-VSCode",
+          "kind": "community_vscode_extension",
+          "extension_id": "GerhardBrueckl.onelake-vscode",
+          "decision": "use_directly_as_peer_extension",
+          "capabilities_observed": [
+            "onelake:/ file system provider",
+            "browse OneLake in VS Code Explorer",
+            "open/save files with guarded writes"
+          ],
+          "control_plane_role": "Expose OneLake entry points from Fabric projects; do not build another OneLake explorer."
+        },
+        {
+          "repo": "microsoft/fabric-toolbox",
+          "kind": "official_toolbox_catalog",
+          "decision": "curate_selected_assets_not_wrap_entire_repo",
+          "capabilities_observed": [
+            "monitoring tools",
+            "accelerators",
+            "CI/CD samples",
+            "migration/modernization samples",
+            "Fabric platform and Spark monitoring"
+          ],
+          "control_plane_role": "Maintain a curated catalog of relevant accelerators/actions with provenance; surface only tools that solve a current project need."
+        },
+        {
+          "repo": "microsoft/fabric-cicd",
+          "kind": "official_python_library",
+          "decision": "use_as_library_or_task",
+          "capabilities_observed": [
+            "code-first CI/CD for source-controlled Fabric workspaces",
+            "deployment automation without direct REST API handling by the caller"
+          ],
+          "control_plane_role": "Run or scaffold project CI/CD tasks; no separate VS Code extension required."
+        },
+        {
+          "repo": "microsoft/fabric-extensibility-toolkit",
+          "kind": "official_fabric_workload_sdk",
+          "decision": "keep_as_separate_fabric_workload_development_toolchain",
+          "capabilities_observed": [
+            "create custom Fabric workloads/items",
+            "Fabric-native workload UI/components",
+            "remote hosting and job scheduling support"
+          ],
+          "control_plane_role": "Surface as a Fabric workload-development path/template. Do not confuse a Fabric workload extension with a VS Code extension."
+        },
+        {
+          "repo": "gbrueckl/Fabric.Toolbox",
+          "kind": "community_toolbox_repository",
+          "decision": "reference_and_curate_selected_scripts",
+          "control_plane_role": "Treat as a source of useful Fabric/Data Engineering tools. Promote individual capabilities only after inspecting and testing them."
+        },
+        {
+          "repo": "julian-passebecq/fabric-toolbox_J",
+          "kind": "local_fork_donor",
+          "decision": "stop_growing_as_separate_general_ui",
+          "control_plane_role": "Keep as donor/history. Migrate only proven useful actions into the Fabric adapter or keep them as callable scripts/tools."
+        },
+        {
+          "repo": "julian-passebecq/fabricdatapasstoolbox",
+          "kind": "local_vscode_companion_experiment",
+          "decision": "consolidate_into_fabric_adapter",
+          "control_plane_role": "Do not develop a second standalone Fabric toolbox extension unless an independent distribution boundary later appears."
+        }
+      ]
+    },
+    "powerbi": {
+      "strategy": "vscode_first_for_source_agentic_and_automation_specialized_ui_external",
+      "tools": [
+        {
+          "repo": "data-goblin/power-bi-agentic-development",
+          "kind": "agentic_plugin_marketplace",
+          "decision": "use_as_agentic_companion_not_repackage",
+          "capabilities_observed": [
+            "Power BI and Fabric agent skills/plugins",
+            "Claude Code plugin marketplace",
+            "Copilot CLI plugin compatibility",
+            "PBIP/semantic model/report/Fabric-focused agent workflows"
+          ],
+          "control_plane_role": "Detect/document optional agentic tooling and launch setup/runbook actions. Do not copy the marketplace into the VS Code extension."
+        },
+        {
+          "repo": "data-goblin/powerbi-macguyver-toolbox",
+          "kind": "powerbi_pattern_and_template_reference",
+          "decision": "keep_as_reference_catalog",
+          "control_plane_role": "Useful knowledge/examples for report development; not a VS Code extension."
+        },
+        {
+          "repo": "julian-passebecq/powerbi_enhanced_dev",
+          "kind": "local_csharp_engineering_ide_donor",
+          "decision": "stop_treating_as_default_general_shell",
+          "control_plane_role": "Keep specialized model/report engineering code as donor. Move generic navigation/orchestration into VS Code; retain external UI only where it materially beats VS Code."
+        },
+        {
+          "repo": "julian-passebecq/TabularEditor_J",
+          "kind": "specialized_semantic_model_donor_tool",
+          "decision": "keep_specialized_external",
+          "control_plane_role": "Launch/integrate where useful; do not force advanced TOM/model editing into the generic control panel."
+        }
+      ]
+    },
+    "databricks": {
+      "strategy": "official_extension_and_cli_primary_project_adapter_for_context",
+      "tools": [
+        {
+          "repo": "official Databricks VS Code extension",
+          "kind": "vendor_vscode_extension",
+          "decision": "primary_vscode_client",
+          "control_plane_role": "Detect/open/focus and complement with project-specific commands rather than fork."
+        },
+        {
+          "repo": "gbrueckl/Databricks.API.PowerShell",
+          "kind": "community_powershell_module",
+          "decision": "optional_admin_automation_tool",
+          "capabilities_observed": [
+            "Databricks REST API PowerShell cmdlets",
+            "workspace import/export",
+            "jobs and cluster automation",
+            "uses Databricks CLI/Azure tooling for some authentication flows"
+          ],
+          "control_plane_role": "Optional task provider for PowerShell-oriented admin/automation; not the primary Databricks client."
+        },
+        {
+          "repo": "julian-passebecq/databricks-vscode-foil",
+          "kind": "local_vendor_extension_fork_experiment",
+          "decision": "freeze_as_reference_experiment",
+          "control_plane_role": "Do not continue as the main FOIL path; current package identity collides with the official Databricks extension."
+        },
+        {
+          "repo": "julian-passebecq/foil_databrick_dab",
+          "kind": "project_execution_repo",
+          "decision": "keep_as_foil_databricks_implementation",
+          "control_plane_role": "FOIL profile points to this repo for Databricks bundle/run workflows."
+        }
+      ]
+    },
+    "infrastructure": {
+      "strategy": "keep_official_or_best_of_breed_extensions_outside_control_plane",
+      "tools": [
+        {
+          "name": "Terraform",
+          "kind": "peer_vscode_extension_or_cli",
+          "decision": "use_directly"
+        },
+        {
+          "name": "OpenTofu",
+          "kind": "peer_vscode_extension_or_cli",
+          "decision": "use_directly"
+        },
+        {
+          "name": "Kubernetes",
+          "kind": "peer_vscode_extension_or_cli",
+          "decision": "use_directly"
+        },
+        {
+          "name": "Docker",
+          "kind": "peer_vscode_extension_or_cli",
+          "decision": "use_directly"
+        },
+        {
+          "name": "Remote SSH",
+          "kind": "peer_vscode_extension",
+          "decision": "use_directly"
+        }
+      ],
+      "control_plane_role": "Show project-specific infrastructure status and shortcuts; do not implement Terraform/OpenTofu/Kubernetes/SSH clients."
+    },
+    "oracle_vm": {
+      "strategy": "project_adapter_over_standard_ssh_cli_and_service_tasks",
+      "control_plane_role": [
+        "VM/project health",
+        "open SSH terminal",
+        "Airflow status/actions",
+        "Polars ETL tasks",
+        "OpenTofu/Terraform tasks",
+        "Docker/K3s status",
+        "logs"
+      ],
+      "boundary": "Use Remote SSH/terminal/OCI CLI or supported APIs for low-level operations."
+    }
+  },
+  "project_profiles": {
+    "foil": {
+      "current_repo": "julian-passebecq/foil-ai-extension",
+      "current_role": "lightweight FOIL navigator/binder",
+      "target_role": "FOIL project adapter/profile for the global VS Code control plane",
+      "decision": "keep_project_specific_logic_separate_from_vendor_clients",
+      "notes": [
+        "FOIL Project Management/Mongo remains routing and durable project state.",
+        "GitHub remains implementation authority.",
+        "The FOIL adapter should open/call Fabric, Databricks, infrastructure and other tools needed by the current FOIL task."
+      ]
+    }
+  },
+  "mermaid": "flowchart TB\n  CP[Data Platform VS Code Control Plane]\n  CP --> FAB[Fabric adapter]\n  CP --> PBI[Power BI adapter]\n  CP --> DBX[Databricks adapter]\n  CP --> INF[Infrastructure adapter]\n  CP --> PROJ[Project profiles]\n  FAB --> FSO[Fabric Studio extension]\n  FAB --> OL[OneLake-VSCode]\n  FAB --> FTB[Microsoft Fabric Toolbox catalog]\n  FAB --> FCICD[fabric-cicd]\n  FAB --> FEXT[Fabric Extensibility Toolkit]\n  PBI --> AG[Power BI Agentic Development]\n  PBI --> PMG[MacGuyver Toolbox]\n  PBI --> EXTUI[Specialized external tools]\n  DBX --> DBXE[Official Databricks extension]\n  DBX --> DBCLI[Databricks CLI / Bundles]\n  DBX --> DBPS[DatabricksPS optional]\n  INF --> TF[Terraform / OpenTofu]\n  INF --> K8S[Kubernetes / Docker]\n  INF --> SSH[Remote SSH]\n  PROJ --> FOIL[FOIL profile]\n  FOIL --> FAB\n  FOIL --> DBX\n  FOIL --> INF",
+  "next_actions": [
+    "Create a dedicated implementation repository for the global VS Code control plane when coding begins; do not repurpose Datapass Workbench.",
+    "Build the shell first: project selector, tool detection, galaxy/control-panel view and command routing.",
+    "Implement Fabric adapter first because existing Fabric tooling is fragmented across official/community extensions, libraries and toolboxes.",
+    "Keep Fabric Studio and OneLake-VSCode as peer extensions and integrate by discovery/commands rather than forking.",
+    "Create a curated Fabric Toolbox catalog instead of cloning every Microsoft Fabric Toolbox asset into the extension.",
+    "Migrate only useful generic actions from fabricdatapasstoolbox/fabric-toolbox_J into the Fabric adapter.",
+    "Implement FOIL as the first project profile and use it to prove Databricks/Fabric/Oracle VM orchestration.",
+    "Do not start a separate Power BI VSIX until a capability cannot reasonably live as an adapter or external specialized tool."
+  ]
+}
