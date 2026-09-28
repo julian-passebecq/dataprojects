@@ -44,12 +44,12 @@ Target: lightweight capability/product/extension router. No duplicate analyzer o
 Not created yet. Target: real local executable prototypes.
 
 Factory V1 stack:
-DuckDB, local Parquet, optional DuckLake, dlt, dbt Core/dbt-duckdb, Polars, Pandas, scikit-learn, **Dagster OSS as the reference global orchestrator**, optional FastAPI, optional Redis, optional Docker Compose, optional dbt Charts and later optional MotherDuck.
+DuckDB, local Parquet, optional DuckLake, dlt, dbt Core/dbt-duckdb, Polars, Pandas, scikit-learn, **our bounded Factory Local Orchestrator extracted from Mosaic/Factory Lab**, optional FastAPI, optional Redis, optional Docker Compose and optional dbt Charts.
 
 Factory V1 explicitly excludes:
 fake Spark, Spark simulation, mandatory Spark, Airflow as the V1 orchestrator, Meltano as a core dependency, Kubernetes, Kafka, MinIO/local S3 emulation by default and mandatory Docker.
 
-The Factory semantic DAG sits above dlt/dbt/Polars/sklearn. dbt remains a nested model/transformation DAG.
+The Factory semantic DAG sits above dlt/dbt/Polars/sklearn. dbt remains a nested model/transformation DAG. Dagster is optional later, not a V1 dependency.
 
 ## Major Factory donors
 
