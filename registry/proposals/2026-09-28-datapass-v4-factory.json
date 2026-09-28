@@ -1,0 +1,218 @@
+{
+  "schema_version": "1.0",
+  "proposal_id": "2026-09-28-datapass-v4-factory",
+  "status": "proposal_for_review",
+  "created_at": "2026-09-28",
+  "authoring_context": {
+    "user": "Julian Passebecq",
+    "assistant_model": "GPT-5.6 Sol",
+    "note": "This architecture was not produced by GPT-6."
+  },
+  "authority_rules": [
+    "dataprojects remains the global constellation authority",
+    "owning application repositories remain implementation/test truth",
+    "this proposal does not silently replace registry/constellation.json until reviewed",
+    "datapass-vscode-common holds the detailed common-engine technical specification for this proposal"
+  ],
+  "conflicts_with_current_registry": [
+    {
+      "id": "datapass-name-scope",
+      "current": "registry/products/datapass.json uses Datapass for the coding/interview product in julian-passebecq/ducklabms_code",
+      "proposed": "DataPass V4 refers to the repo-intelligence/control-plane extension julian-passebecq/datapass-vscode",
+      "required_action": "explicit naming/scope migration before changing main registry"
+    },
+    {
+      "id": "factorylab-scope",
+      "current": "Fabric Factory Lab is a learning/simulation product centered on Fabric/ADF pipeline practice",
+      "proposed": "Factory becomes a broader local executable prototype product using DuckDB/DuckLake/dlt/dbt/Polars/Pandas/sklearn with optional FastAPI/Redis/Docker Compose",
+      "required_action": "decide whether to evolve/rename FactoryLab or create datapass-vscode-factory and keep old learning scope separate"
+    },
+    {
+      "id": "mosaic-centrality",
+      "current": "Mosaic/ducklab donor stack contains many learning runtimes and simulations",
+      "proposed": "Mosaic is peripheral/learning; only generic workbench infrastructure is extracted for Factory",
+      "required_action": "do not make Mosaic a core dependency"
+    }
+  ],
+  "proposed_core_products": [
+    {
+      "id": "datapass-v4",
+      "canonical_repo": "julian-passebecq/datapass-vscode",
+      "purpose": "Git/repository intelligence and control plane: understand files, roles, milestones, static lineage, findings, readiness, variants, tools and semantic Git changes.",
+      "execution_boundary": "discovery never executes arbitrary client code"
+    },
+    {
+      "id": "prototype-cloud",
+      "canonical_repo": "julian-passebecq/datapass-vscode-cloud",
+      "purpose": "Catalog-backed cloud architecture alternatives, subvariants, monitoring/tooling guidance and workload-aware cost/performance driver comparison.",
+      "execution_boundary": "no cloud provisioning"
+    },
+    {
+      "id": "factory",
+      "canonical_repo_proposed": "julian-passebecq/datapass-vscode-factory",
+      "purpose": "Fast low-cost local executable prototypes that can be edited, run, measured and demonstrated.",
+      "v1_stack": [
+        "DuckDB",
+        "Parquet",
+        "DuckLake optional",
+        "dlt",
+        "dbt-duckdb",
+        "Polars",
+        "Pandas",
+        "scikit-learn",
+        "FastAPI optional",
+        "Redis optional",
+        "Docker Compose optional",
+        "dbt Charts optional",
+        "MotherDuck optional"
+      ],
+      "excluded_v1": [
+        "fake Spark",
+        "Spark simulation",
+        "mandatory real Spark",
+        "mandatory Airflow",
+        "Kubernetes",
+        "mandatory Docker",
+        "Kafka"
+      ]
+    },
+    {
+      "id": "datapass-hub",
+      "canonical_repo": "julian-passebecq/datapass-vscode-hub",
+      "purpose": "Lightweight capability/tool/extension router. Tells the developer which product or official tool to use for the current artifact/action.",
+      "boundary": "no duplicate analyzers or catalogs"
+    }
+  ],
+  "common_foundation": {
+    "repository": "julian-passebecq/datapass-vscode-common",
+    "branch": "plan/v4-semantic-engine-factory",
+    "responsibilities": [
+      "semantic-core",
+      "datapass.understanding compatibility",
+      "analyzer contracts",
+      "catalog contracts",
+      "workload/findings/performance/cost types",
+      "scenario contracts",
+      "Factory runtime contracts",
+      "reusable workbench-core extraction target"
+    ],
+    "central_ir": [
+      "Artifact",
+      "Role",
+      "Milestone",
+      "Operation",
+      "Dataset",
+      "Lineage",
+      "Evidence",
+      "Finding",
+      "Metric",
+      "WorkloadProfile",
+      "PerformanceDriver",
+      "CostDriver",
+      "Uncertainty"
+    ]
+  },
+  "peripheral_or_donor_products": [
+    {
+      "id": "mosaic",
+      "repo": "julian-passebecq/datapass-mosaic-vscode",
+      "role": "learning product and workbench donor",
+      "reuse": [
+        "flexible grid/panes",
+        "runtime client/protocol",
+        "DuckDB/DuckLake surfaces",
+        "table/chart/graph panes",
+        "layout persistence"
+      ],
+      "do_not_port": [
+        "SparkLab/fake Spark",
+        "grading",
+        "Practice/Interview",
+        "learning simulations"
+      ]
+    },
+    {
+      "id": "contoso-data-studio",
+      "repo": "julian-passebecq/contoso-data-studio",
+      "role": "Factory donor and first retail fixture",
+      "reuse": [
+        "deterministic scenarios",
+        "generator manifests/hashes",
+        "DuckLake service",
+        "dbt runner",
+        "explorer",
+        "charts/KPI patterns"
+      ]
+    },
+    {
+      "id": "contoso-generator",
+      "repo": "julian-passebecq/Contoso-Data-Generator-V2",
+      "role": "large generator/parity donor; inspect selectively",
+      "warning": "contains Spark/Airflow/Kubernetes-oriented paths that are not Factory V1 requirements"
+    },
+    {
+      "id": "cloudiagram",
+      "repo": "gitlab.com/julianpassebecq/cloudiagram",
+      "role": "later publication/drill-down/PPTX consumer",
+      "status_at_proposal": {
+        "branch": "feat/cloudiagram-v2-desktop-ai-documents",
+        "sha": "2941d9c3f0c1e21f5bac3a9c297e3f35bdbdd79e",
+        "mr": 1,
+        "pipeline": "success"
+      },
+      "boundary": "not on the immediate V4/Factory critical path"
+    },
+    {
+      "id": "mongoku",
+      "repo": "julian-passebecq/Mongoku-datapass",
+      "role": "optional portfolio/read-model",
+      "boundary": "not a required project authority for V4"
+    }
+  ],
+  "explicitly_do_not_reuse_in_factory": [
+    {
+      "repo": "julian-passebecq/fastapispark",
+      "reason": "Fake Spark runtime/simulation; Julian explicitly removed fake Spark from Factory."
+    }
+  ],
+  "inspect_before_reuse": [
+    "julian-passebecq/fastapi-fabric",
+    "julian-passebecq/VizLens",
+    "julian-passebecq/Fluent2_J_Viz",
+    "julian-passebecq/powerbi_enhanced_dev",
+    "julian-passebecq/TabularEditor_J",
+    "julian-passebecq/Contoso_Data_Fabric",
+    "julian-passebecq/datapass-studio",
+    "julian-passebecq/datapasscontrol",
+    "julian-passebecq/fabricdatapasstoolbox",
+    "julian-passebecq/fabric-toolbox_J"
+  ],
+  "first_provider_vertical": {
+    "id": "fabric-v1",
+    "decisions": [
+      "Lakehouse vs Warehouse",
+      "notebook/Spark vs SQL vs mixed transform",
+      "medallion depth",
+      "full vs incremental refresh",
+      "Direct Lake vs Import",
+      "pipeline vs notebook-chain orchestration",
+      "dbt on/off",
+      "Copy vs Shortcut",
+      "Gold materialization",
+      "capacity scheduling/refresh staggering",
+      "monitoring profile",
+      "quality profile",
+      "Git/deployment profile"
+    ],
+    "comparison_rule": "show trade-offs, assumptions, developer/ops effort, monitoring, performance/cost drivers separately; do not produce one hidden winner score"
+  },
+  "next_actions": [
+    "Read the full master handoff in this branch.",
+    "Read detailed technical specs in datapass-vscode-common plan/v4-semantic-engine-factory.",
+    "Reconcile the current dataprojects naming/product boundaries before changing registry/constellation.json.",
+    "Implement Common Semantic Core alpha before product-specific rewrites.",
+    "Preserve V3 datapass.understanding through a compatibility adapter.",
+    "Build one deterministic SQL vertical slice in DataPass V4.",
+    "Only then refactor Prototype Cloud, extract workbench-core and create Factory."
+  ]
+}
