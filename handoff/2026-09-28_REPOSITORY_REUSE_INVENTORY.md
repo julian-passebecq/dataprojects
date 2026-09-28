@@ -40,18 +40,26 @@ Target: Prototype Cloud — architecture pattern/scenario/subvariant comparison 
 ### julian-passebecq/datapass-vscode-hub
 Target: lightweight capability/product/extension router. No duplicate analyzer or catalog.
 
-### proposed julian-passebecq/datapass-vscode-factory
-Not created yet. Target: real local executable prototypes.
+### Factory repository authority
+A private GitLab placeholder already exists: `juliandatapass-group/datapass-factory` (project 86942381). It currently contains only the default README. Do not create `datapass-vscode-factory` until Codex decides the canonical repo in an ADR.
 
-Factory V1 stack:
-DuckDB, local Parquet, optional DuckLake, dlt, dbt Core/dbt-duckdb, Polars, Pandas, scikit-learn, **our bounded Factory Local Orchestrator extracted from Mosaic/Factory Lab**, optional FastAPI, optional Redis, optional Docker Compose and optional dbt Charts.
+Target: real local executable prototypes.
+
+Factory V1 stack (stable capabilities, not final lower engine):
+DuckDB, local Parquet, optional DuckLake, dlt, dbt Core/dbt-duckdb, Polars, Pandas, scikit-learn, optional FastAPI, optional Redis, optional Docker Compose and optional dbt Charts.
+
+**Execution foundation is an open tech-lead gate:** Duckle adapter-first vs extracted Mosaic/FactoryLab control flow vs hybrid.
 
 Factory V1 explicitly excludes:
 fake Spark, Spark simulation, mandatory Spark, Airflow as the V1 orchestrator, Meltano as a core dependency, Kubernetes, Kafka, MinIO/local S3 emulation by default and mandatory Docker.
 
-The Factory semantic DAG sits above dlt/dbt/Polars/sklearn. dbt remains a nested model/transformation DAG. Dagster is optional later, not a V1 dependency.
+The Factory semantic DAG sits above dlt/dbt/Polars/sklearn. dbt remains a nested model/transformation DAG. Dagster is optional later, not a V1 dependency. Greenfield executor work is blocked until the Duckle/Mosaic spike-backed ADR.
 
 ## Major Factory donors
+
+### julian-passebecq/ducklabms_code
+Large historical donor and source of the old constellation naming conflict. Reuse narrowly: GraphCanvas, WorkbenchSurface, Monaco/notebook patterns, pipeline compiler/runner, dbt runner, local jobs/data, DuckLake and Fabric migration sources. Do not import the whole repo as a dependency.
+
 
 ### julian-passebecq/datapass-mosaic-vscode
 Learning product and major workbench donor.
@@ -103,6 +111,13 @@ Do not port its Spark/Airflow/Minikube/Kubernetes or object-store infrastructure
 ### julian-passebecq/Contoso_Data_Fabric
 Older Fabric/Contoso donor/reference. Reuse only a specific superior asset; do not revive duplicate scope.
 
+### GitLab Factory placeholders
+- `juliandatapass-group/datapass-factory` — likely canonical Factory repo candidate, currently empty/default README.
+- `foil-lab/datapass-factory-foil` — client placeholder only.
+- `foil-lab/datapass-factory-foil-bridge` — client bridge placeholder only.
+
+Do not claim any of these already implements Factory.
+
 ## Runtime/service experiments
 
 ### julian-passebecq/fastapispark
@@ -126,7 +141,7 @@ Do not make it Factory's universal executor.
 Known empty/near-empty. No Factory V1 dependency.
 
 ### slothflowlabs/duckle
-External candidate already tracked by the older FactoryLab registry. Inspect before reinventing a lower execution layer, but adopt only if it fits the new typed Factory DAG, local-first and security boundaries.
+External candidate already tracked by the older FactoryLab registry. The historical ADR explicitly says to run an adapter/fork spike before greenfield executor work. Codex must treat this as a required architecture gate, compare it with the existing Mosaic/FactoryLab engine and consider a hybrid.
 
 ## Visualization / publication donors
 
@@ -173,7 +188,7 @@ External data-goblin Power BI agent/toolbox projects are already cataloged. Use 
 ## DataPass-family experiments
 
 ### julian-passebecq/datapass-studio
-Older/minimal. Inspect only for a concrete reusable asset.
+Current GitHub repo is effectively a README-only placeholder. Treat as deferred **DataPass Front / ultra-fast prototype frontend** territory. Do not add it to the core galaxy now.
 
 ### julian-passebecq/codex-datapass-bridge
 Private agent-exchange experiment. Compare with current V3 work orders/exchange before reuse.
