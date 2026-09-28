@@ -49,18 +49,16 @@
     },
     {
       "id": "factory",
-      "canonical_repo_proposed": "julian-passebecq/datapass-vscode-factory",
       "purpose": "Fast low-cost local executable prototypes that can be edited, run, measured and demonstrated.",
       "v1_stack": [
         "DuckDB",
         "local Parquet",
         "DuckLake optional",
         "dlt",
-        "dbt-duckdb",
+        "dbt Core/dbt-duckdb",
         "Polars",
         "Pandas",
         "scikit-learn",
-        "Factory Local Orchestrator (bounded, extracted from Mosaic/Factory Lab)",
         "FastAPI optional",
         "Redis optional",
         "Docker Compose optional",
@@ -70,30 +68,43 @@
         "fake Spark",
         "Spark simulation",
         "mandatory real Spark",
-        "Airflow as V1 orchestrator",
+        "Airflow as V1 core runtime",
         "Dagster as mandatory V1 runtime",
         "Meltano as core dependency",
         "Kubernetes/k3s",
         "Kafka",
         "MinIO/local S3 emulation by default",
         "mandatory Docker",
-        "remote hosting"
+        "remote hosting",
+        "MotherDuck requirement"
       ],
       "orchestration": {
-        "semantic_dag": "Factory owns the provider-neutral semantic DAG above dlt/dbt/Polars/sklearn",
-        "reference_runtime": "Factory Local Orchestrator",
-        "donor": "datapass-mosaic-vscode runtime/factorylab + SharedGraphCanvas/FactoryPipelines/PipelineSurface",
-        "nested_graphs": [
-          "dbt model DAG"
+        "semantic_dag": "Factory owns provider-neutral semantic DAG above dlt/dbt/Polars/sklearn",
+        "status": "OPEN_TECH_LEAD_GATE",
+        "candidates": [
+          "Duckle adapter-first",
+          "extract/evolve Mosaic/FactoryLab control-flow engine",
+          "hybrid: our semantic/control layer + Duckle dataflow execution"
+        ],
+        "required_adr": "ADR-FACTORY-EXECUTION-001",
+        "required_spikes": [
+          "Duckle adapter integration spike",
+          "Mosaic/FactoryLab extraction spike"
         ],
         "future_optional_adapters": [
           "Dagster",
           "Airflow",
           "Apache Hop"
         ],
-        "boundary": "local-only bounded scheduler; no distributed workers, HA scheduler, remote agents or Kubernetes executor"
+        "nested_graphs": [
+          "dbt model DAG"
+        ]
       },
-      "local_minimalism": "Prefer local files + DuckDB, DuckLake when lakehouse semantics matter; add FastAPI/Redis/Docker only when the selected local scenario requires those capabilities."
+      "local_minimalism": "Prefer local files + DuckDB, DuckLake when lakehouse semantics matter; add FastAPI/Redis/Docker only when the selected local scenario requires those capabilities.",
+      "canonical_repo_candidates": [
+        "gitlab.com/juliandatapass-group/datapass-factory (existing private placeholder, preferred first audit)",
+        "new repository only if Codex ADR proves existing placeholder is unsuitable"
+      ]
     },
     {
       "id": "datapass-hub",
@@ -113,7 +124,8 @@
       "workload/findings/performance/cost types",
       "scenario contracts",
       "Factory runtime contracts",
-      "reusable workbench-core extraction target"
+      "reusable workbench-core extraction target",
+      "Factory execution adapter contract independent of chosen lower engine"
     ],
     "central_ir": [
       "Artifact",
@@ -233,5 +245,28 @@
     "Preserve V3 datapass.understanding through a compatibility adapter.",
     "Build one deterministic SQL vertical slice in DataPass V4.",
     "Only then refactor Prototype Cloud, extract workbench-core and create Factory."
+  ],
+  "additional_repositories_to_audit": [
+    "gitlab.com/juliandatapass-group/datapass-factory",
+    "gitlab.com/foil-lab/datapass-factory-foil",
+    "gitlab.com/foil-lab/datapass-factory-foil-bridge",
+    "gitlab.com/juliandatapass-group/datapass-vscode-cloud",
+    "github.com/julian-passebecq/ducklabms_code",
+    "github.com/julian-passebecq/datapasscontrol",
+    "github.com/slothflowlabs/duckle"
+  ],
+  "deferred_products": [
+    {
+      "id": "datapass-front",
+      "repo": "julian-passebecq/datapass-studio",
+      "status": "deferred_placeholder",
+      "note": "Potential future ultra-fast Streamlit/Next-style frontend consuming Common/Factory APIs; not in current core galaxy."
+    },
+    {
+      "id": "cloudiagram",
+      "repo": "gitlab.com/julianpassebecq/cloudiagram",
+      "status": "independent_outside_galaxy",
+      "note": "Harvest design principles only; no current DataPass dependency."
+    }
   ]
 }
