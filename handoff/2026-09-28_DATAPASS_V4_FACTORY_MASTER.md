@@ -775,6 +775,12 @@ Ingestion:
 
 - dlt.
 
+Global orchestration:
+
+- **Dagster OSS** as the reference Factory V1 orchestrator;
+- Factory owns a provider-neutral semantic DAG above dbt;
+- dbt remains an expandable transformation/model sub-DAG.
+
 Transformation:
 
 - dbt Core + dbt-duckdb;
@@ -835,6 +841,31 @@ Factory uses real local execution on:
 - sklearn.
 
 If real Spark is ever needed later, add an explicit real Spark adapter.
+
+---
+
+# 14.5 Local minimalism / Duck-first rule
+
+The local prototype should use the smallest number of moving pieces that still demonstrates the project.
+
+Preferred order:
+
+1. DuckDB.
+2. local Parquet.
+3. DuckLake when lakehouse semantics are genuinely useful.
+4. Polars/Pandas.
+5. dbt-duckdb.
+6. dlt.
+7. sklearn.
+8. Dagster.
+9. FastAPI only for a real service/API boundary.
+10. Redis only for real queue/cache/stream/state semantics.
+11. Docker Compose only for service processes.
+12. MotherDuck only as optional sharing.
+
+Explicitly **do not add MinIO/local S3 emulation by default**. DuckLake + local Parquet is the preferred V1 lakehouse story.
+
+Do not add Postgres, Kafka, Grafana, MLflow, Kubernetes or another service simply to imitate cloud infrastructure.
 
 ---
 
@@ -903,37 +934,44 @@ Do not start Redis when not needed.
 
 dlt is ingestion, not the general orchestrator.
 
-Do not start with Airflow.
+dbt owns the transformation/model DAG, but the Factory project needs a **global DAG above dbt**.
 
-Build a small typed Factory DAG runner.
+Final V1 decision:
 
-V1 step types:
+> **Dagster OSS is the reference orchestration/runtime adapter.**
 
-- generator;
-- dlt;
-- sql;
-- dbt;
-- python;
-- polars;
-- pandas;
-- sklearn;
-- quality;
-- service;
-- docker-compose.
+Factory still owns a strict provider-neutral semantic DAG with stable IDs, dependencies, nested groups, evidence/source references and normalized receipts. Dagster executes it.
 
-Needs:
+Hierarchy:
 
-- dependency validation;
-- cycle refusal;
-- run state;
-- failure propagation;
-- cancellation;
-- duration;
-- metrics;
-- outputs;
-- logs.
+~~~text
+Factory global DAG
+  generator
+    -> dlt
+    -> dbt group
+         -> dbt internal model DAG
+    -> Polars/Pandas
+    -> sklearn
+    -> publish/demo
+~~~
 
-No distributed scheduler needed.
+Why Dagster:
+
+- local/open-source;
+- visible asset/job graph;
+- designed around data assets;
+- strong fit above dbt/Python work;
+- compatible with dlt integration;
+- no Kubernetes requirement;
+- avoids rebuilding a scheduler.
+
+Airflow remains a future adapter/import route for real client projects, not the Factory V1 runtime.
+
+Meltano remains a cataloged alternative/importer, not a Factory core dependency.
+
+Factory must show its own DAG in the Workbench; Dagster's UI is an optional deep operational view.
+
+Full technical decision is in `datapass-vscode-common/handoff/V4_ORCHESTRATION_DECISION.md`.
 
 ---
 
