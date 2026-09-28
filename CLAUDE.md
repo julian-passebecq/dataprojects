@@ -15,7 +15,8 @@ This branch contains a **proposed constellation update** based on Julian Passebe
 
 1. [handoff/2026-09-28_CODEX_TECH_LEAD_MASTER_BRIEF.md](handoff/2026-09-28_CODEX_TECH_LEAD_MASTER_BRIEF.md)
 2. [handoff/2026-09-28_REPOSITORY_AUTHORITY_MAP.md](handoff/2026-09-28_REPOSITORY_AUTHORITY_MAP.md)
-3. [handoff/2026-09-28_DATAPASS_V4_FACTORY_MASTER.md](handoff/2026-09-28_DATAPASS_V4_FACTORY_MASTER.md)
+3. [handoff/2026-09-28_CONSOLIDATION_CHECKLIST.md](handoff/2026-09-28_CONSOLIDATION_CHECKLIST.md)
+4. [handoff/2026-09-28_DATAPASS_V4_FACTORY_MASTER.md](handoff/2026-09-28_DATAPASS_V4_FACTORY_MASTER.md)
 4. [registry/proposals/2026-09-28-datapass-v4-factory.json](registry/proposals/2026-09-28-datapass-v4-factory.json)
 3. Current main [registry/constellation.json](registry/constellation.json) and relevant product entries.
 4. Technical specifications on branch **plan/v4-semantic-engine-factory** of [julian-passebecq/datapass-vscode-common](https://github.com/julian-passebecq/datapass-vscode-common):
