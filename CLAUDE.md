@@ -35,7 +35,7 @@ This branch contains a **proposed constellation update** based on Julian Passebe
 - Contoso Data Studio and Contoso Data Generator are major Factory donors/fixtures.
 - **Factory V1 must not contain fake Spark or a Spark simulator.**
 - **Kubernetes is not required by Factory V1.**
-- **Dagster OSS is the reference Factory V1 global orchestrator**, with the Factory semantic DAG above dlt/dbt/Polars/sklearn and dbt exposed as a nested transformation DAG.
+- **Factory V1 uses our bounded local orchestrator**, extracted from the existing Mosaic/Factory Lab control-flow engine. Dagster is optional later, not required. The Factory semantic DAG remains above dlt/dbt/Polars/sklearn and dbt is a nested transformation DAG.
 - **Duck-first local minimalism:** DuckDB/local Parquet first, DuckLake when lakehouse semantics matter; no MinIO/local S3 emulator by default.
 - Docker Compose is optional and only for service-style scenarios.
 - Deterministic analysis comes before AI.
