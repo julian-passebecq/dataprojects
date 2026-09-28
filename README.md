@@ -173,3 +173,11 @@ Streamlit is fine for a disposable prototype, but a static dashboard is simpler 
 3. `registry/tooling.json`, `registry/services.json`, or `registry/domain-projects.json`
 4. the owning code repository
 5. only then make implementation claims
+
+## 2026-09-28 proposal — DataPass V4 / Prototype Cloud / Factory
+
+A new constellation proposal is being reviewed on branch `plan/datapass-v4-factory-constellation`. It does **not** replace the current registry until the naming/scope conflicts are explicitly resolved.
+
+Claude and other implementation agents should start with [CLAUDE.md](CLAUDE.md), then [handoff/2026-09-28_DATAPASS_V4_FACTORY_MASTER.md](handoff/2026-09-28_DATAPASS_V4_FACTORY_MASTER.md). The detailed Common Engine / Factory / Fabric V1 specifications live in `julian-passebecq/datapass-vscode-common` on branch `plan/v4-semantic-engine-factory`.
+
+The recorded analysis was produced by **GPT-5.6 Sol**, not GPT-6. Factory V1 explicitly excludes fake Spark/Spark simulation and does not require Kubernetes.
