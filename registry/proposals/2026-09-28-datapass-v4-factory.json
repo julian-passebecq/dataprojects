@@ -53,13 +53,14 @@
       "purpose": "Fast low-cost local executable prototypes that can be edited, run, measured and demonstrated.",
       "v1_stack": [
         "DuckDB",
-        "Parquet",
+        "local Parquet",
         "DuckLake optional",
         "dlt",
         "dbt-duckdb",
         "Polars",
         "Pandas",
         "scikit-learn",
+        "Dagster OSS reference global orchestrator",
         "FastAPI optional",
         "Redis optional",
         "Docker Compose optional",
@@ -70,11 +71,22 @@
         "fake Spark",
         "Spark simulation",
         "mandatory real Spark",
-        "mandatory Airflow",
+        "Airflow as V1 orchestrator",
+        "Meltano as core dependency",
         "Kubernetes",
-        "mandatory Docker",
-        "Kafka"
-      ]
+        "Kafka",
+        "MinIO/local S3 emulation by default",
+        "mandatory Docker"
+      ],
+      "orchestration": {
+        "semantic_dag": "Factory owns a provider-neutral semantic DAG above dlt/dbt/Polars/sklearn",
+        "reference_runtime": "Dagster OSS",
+        "nested_graphs": [
+          "dbt model DAG"
+        ],
+        "boundary": "Dagster is an execution adapter; Common Semantic IR remains orchestrator-neutral"
+      },
+      "local_minimalism": "Prefer DuckDB/local Parquet first, DuckLake when lakehouse semantics matter; add FastAPI/Redis/Docker only when the scenario needs those capabilities."
     },
     {
       "id": "datapass-hub",
