@@ -13,8 +13,10 @@ This branch contains a **proposed constellation update** based on Julian Passebe
 
 ## Read first
 
-1. [handoff/2026-09-28_DATAPASS_V4_FACTORY_MASTER.md](handoff/2026-09-28_DATAPASS_V4_FACTORY_MASTER.md)
-2. [registry/proposals/2026-09-28-datapass-v4-factory.json](registry/proposals/2026-09-28-datapass-v4-factory.json)
+1. [handoff/2026-09-28_CODEX_TECH_LEAD_MASTER_BRIEF.md](handoff/2026-09-28_CODEX_TECH_LEAD_MASTER_BRIEF.md)
+2. [handoff/2026-09-28_REPOSITORY_AUTHORITY_MAP.md](handoff/2026-09-28_REPOSITORY_AUTHORITY_MAP.md)
+3. [handoff/2026-09-28_DATAPASS_V4_FACTORY_MASTER.md](handoff/2026-09-28_DATAPASS_V4_FACTORY_MASTER.md)
+4. [registry/proposals/2026-09-28-datapass-v4-factory.json](registry/proposals/2026-09-28-datapass-v4-factory.json)
 3. Current main [registry/constellation.json](registry/constellation.json) and relevant product entries.
 4. Technical specifications on branch **plan/v4-semantic-engine-factory** of [julian-passebecq/datapass-vscode-common](https://github.com/julian-passebecq/datapass-vscode-common):
    - handoff/V4_MASTER_HANDOFF.md
@@ -29,13 +31,13 @@ This branch contains a **proposed constellation update** based on Julian Passebe
 - DataPass V4 = repo intelligence/control-plane evolution of **julian-passebecq/datapass-vscode**.
 - Prototype Cloud = architecture alternatives/catalog consumer in **datapass-vscode-cloud**.
 - Hub = lightweight capability/tool router in **datapass-vscode-hub**.
-- Factory = new local executable-prototype product, likely **datapass-vscode-factory**.
+- Factory = local executable-prototype product. A private GitLab placeholder already exists at **juliandatapass-group/datapass-factory**; do not create another repo before the tech-lead ADR.
 - Mosaic remains a separate learning product/donor; extract only reusable workbench infrastructure.
 - Cloudiagram is deferred to later publication/PPTX consumption; not central to the first implementation wave.
 - Contoso Data Studio and Contoso Data Generator are major Factory donors/fixtures.
 - **Factory V1 must not contain fake Spark or a Spark simulator.**
 - **Kubernetes is not required by Factory V1.**
-- **Factory V1 uses our bounded local orchestrator**, extracted from the existing Mosaic/Factory Lab control-flow engine. Dagster is optional later, not required. The Factory semantic DAG remains above dlt/dbt/Polars/sklearn and dbt is a nested transformation DAG.
+- **Factory V1 lower execution is an OPEN TECH-LEAD GATE.** Codex must compare Duckle adapter-first, extracted Mosaic/FactoryLab control flow, and a hybrid before choosing. The Factory semantic DAG remains above dlt/dbt/Polars/sklearn and dbt is a nested transformation DAG.
 - **Duck-first local minimalism:** DuckDB/local Parquet first, DuckLake when lakehouse semantics matter; no MinIO/local S3 emulator by default.
 - Docker Compose is optional and only for service-style scenarios.
 - Deterministic analysis comes before AI.
