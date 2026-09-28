@@ -777,9 +777,10 @@ Ingestion:
 
 Global orchestration:
 
-- **Dagster OSS** as the reference Factory V1 orchestrator;
+- **Factory Local Orchestrator**, extracted from the existing Mosaic/Factory Lab control-flow engine;
 - Factory owns a provider-neutral semantic DAG above dbt;
-- dbt remains an expandable transformation/model sub-DAG.
+- dbt remains an expandable transformation/model sub-DAG;
+- Dagster is optional later, not a required V1 runtime.
 
 Transformation:
 
@@ -932,17 +933,23 @@ Do not start Redis when not needed.
 
 # 18. Factory orchestration
 
-dlt is ingestion, not the general orchestrator.
+The decision was revised after inspecting the actual Mosaic source.
 
-dbt owns the transformation/model DAG, but the Factory project needs a **global DAG above dbt**.
+Mosaic already contains both the graph UI and a substantial Data Factory-like control-flow kernel:
 
-Final V1 decision:
+- SharedGraphCanvas / FactoryPipelines / PipelineSurface;
+- dependency conditions;
+- retries/timeouts;
+- inactive/skipped tasks;
+- If/Switch/ForEach/Until;
+- child pipelines;
+- parameters/variables;
+- run IDs and task state;
+- a Workspace adapter boundary that can execute supported work against a local catalog.
 
-> **Dagster OSS is the reference orchestration/runtime adapter.**
+Therefore Factory V1 should use **our own bounded local orchestrator** instead of requiring Dagster.
 
-Factory still owns a strict provider-neutral semantic DAG with stable IDs, dependencies, nested groups, evidence/source references and normalized receipts. Dagster executes it.
-
-Hierarchy:
+The hierarchy is:
 
 ~~~text
 Factory global DAG
@@ -955,23 +962,13 @@ Factory global DAG
     -> publish/demo
 ~~~
 
-Why Dagster:
+The V1 kernel only needs local DAG validation, ready-node scheduling, bounded concurrency, success/failure edges, retry, timeout, cancellation, subprocess isolation, logs and normalized receipts.
 
-- local/open-source;
-- visible asset/job graph;
-- designed around data assets;
-- strong fit above dbt/Python work;
-- compatible with dlt integration;
-- no Kubernetes requirement;
-- avoids rebuilding a scheduler.
+It does not need distributed workers, remote agents, HA scheduling, Kubernetes executors or a backfill platform.
 
-Airflow remains a future adapter/import route for real client projects, not the Factory V1 runtime.
+dlt remains ingestion. dbt remains transformation/model DAG. Airflow/Meltano/Dagster remain external/future adapters rather than Factory core.
 
-Meltano remains a cataloged alternative/importer, not a Factory core dependency.
-
-Factory must show its own DAG in the Workbench; Dagster's UI is an optional deep operational view.
-
-Full technical decision is in `datapass-vscode-common/handoff/V4_ORCHESTRATION_DECISION.md`.
+Full technical decision is in datapass-vscode-common/handoff/V4_ORCHESTRATION_DECISION.md.
 
 ---
 
