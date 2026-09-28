@@ -44,10 +44,12 @@ Target: lightweight capability/product/extension router. No duplicate analyzer o
 Not created yet. Target: real local executable prototypes.
 
 Factory V1 stack:
-DuckDB, optional DuckLake, Parquet, dlt, dbt Core/dbt-duckdb, Polars, Pandas, scikit-learn, optional FastAPI, optional Redis, optional Docker Compose, optional dbt Charts and later optional MotherDuck.
+DuckDB, local Parquet, optional DuckLake, dlt, dbt Core/dbt-duckdb, Polars, Pandas, scikit-learn, **Dagster OSS as the reference global orchestrator**, optional FastAPI, optional Redis, optional Docker Compose, optional dbt Charts and later optional MotherDuck.
 
 Factory V1 explicitly excludes:
-fake Spark, Spark simulation, mandatory Spark, mandatory Airflow, Kubernetes, Kafka and mandatory Docker.
+fake Spark, Spark simulation, mandatory Spark, Airflow as the V1 orchestrator, Meltano as a core dependency, Kubernetes, Kafka, MinIO/local S3 emulation by default and mandatory Docker.
+
+The Factory semantic DAG sits above dlt/dbt/Polars/sklearn. dbt remains a nested model/transformation DAG.
 
 ## Major Factory donors
 
@@ -96,7 +98,7 @@ Extract narrowly:
 - scenario/scale concepts;
 - parity/evidence patterns.
 
-Do not port its Spark/Airflow/Minikube/Kubernetes stack wholesale into Factory V1.
+Do not port its Spark/Airflow/Minikube/Kubernetes or object-store infrastructure wholesale into Factory V1. Prefer DuckDB/DuckLake/local Parquet and only add a service when the selected prototype genuinely requires it.
 
 ### julian-passebecq/Contoso_Data_Fabric
 Older Fabric/Contoso donor/reference. Reuse only a specific superior asset; do not revive duplicate scope.
