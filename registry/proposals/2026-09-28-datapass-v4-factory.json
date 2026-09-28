@@ -60,33 +60,40 @@
         "Polars",
         "Pandas",
         "scikit-learn",
-        "Dagster OSS reference global orchestrator",
+        "Factory Local Orchestrator (bounded, extracted from Mosaic/Factory Lab)",
         "FastAPI optional",
         "Redis optional",
         "Docker Compose optional",
-        "dbt Charts optional",
-        "MotherDuck optional"
+        "dbt Charts optional"
       ],
       "excluded_v1": [
         "fake Spark",
         "Spark simulation",
         "mandatory real Spark",
         "Airflow as V1 orchestrator",
+        "Dagster as mandatory V1 runtime",
         "Meltano as core dependency",
-        "Kubernetes",
+        "Kubernetes/k3s",
         "Kafka",
         "MinIO/local S3 emulation by default",
-        "mandatory Docker"
+        "mandatory Docker",
+        "remote hosting"
       ],
       "orchestration": {
-        "semantic_dag": "Factory owns a provider-neutral semantic DAG above dlt/dbt/Polars/sklearn",
-        "reference_runtime": "Dagster OSS",
+        "semantic_dag": "Factory owns the provider-neutral semantic DAG above dlt/dbt/Polars/sklearn",
+        "reference_runtime": "Factory Local Orchestrator",
+        "donor": "datapass-mosaic-vscode runtime/factorylab + SharedGraphCanvas/FactoryPipelines/PipelineSurface",
         "nested_graphs": [
           "dbt model DAG"
         ],
-        "boundary": "Dagster is an execution adapter; Common Semantic IR remains orchestrator-neutral"
+        "future_optional_adapters": [
+          "Dagster",
+          "Airflow",
+          "Apache Hop"
+        ],
+        "boundary": "local-only bounded scheduler; no distributed workers, HA scheduler, remote agents or Kubernetes executor"
       },
-      "local_minimalism": "Prefer DuckDB/local Parquet first, DuckLake when lakehouse semantics matter; add FastAPI/Redis/Docker only when the scenario needs those capabilities."
+      "local_minimalism": "Prefer local files + DuckDB, DuckLake when lakehouse semantics matter; add FastAPI/Redis/Docker only when the selected local scenario requires those capabilities."
     },
     {
       "id": "datapass-hub",
