@@ -931,25 +931,31 @@ Do not start Redis when not needed.
 
 ---
 
-# 18. Factory orchestration
+# 18. Factory execution foundation — Codex architecture gate
 
-The decision was revised after inspecting the actual Mosaic source.
+The full audit uncovered two substantial implementation paths and one hybrid path. The PM-level handoff must not pick a winner prematurely.
 
-Mosaic already contains both the graph UI and a substantial Data Factory-like control-flow kernel:
+### Candidate A — Duckle adapter-first
 
-- SharedGraphCanvas / FactoryPipelines / PipelineSurface;
-- dependency conditions;
-- retries/timeouts;
-- inactive/skipped tasks;
-- If/Switch/ForEach/Until;
-- child pipelines;
-- parameters/variables;
-- run IDs and task state;
-- a Workspace adapter boundary that can execute supported work against a local catalog.
+External open-source repo: `slothflowlabs/duckle`.
 
-Therefore Factory V1 should use **our own bounded local orchestrator** instead of requiring Dagster.
+An older accepted-direction record already exists in `datapasscontrol/control/decisions/duckle-factorylab.json` and explicitly says to spike Duckle before writing a new generic FactoryLab executor.
 
-The hierarchy is:
+Duckle overlaps heavily with the desired local layer: visual pipeline JSON, DuckDB/DuckLake, generated SQL/plan, previews, rows/timings/status, lineage, control flow, scheduling, dbt and headless execution.
+
+### Candidate B — extract/evolve Mosaic / FactoryLab engine
+
+Existing code already includes the graph UI and substantial Data Factory-like control flow: dependency conditions, retries/timeouts, If/Switch/ForEach/Until, child pipelines, parameters/variables, run state and a local Workspace adapter boundary.
+
+### Candidate C — hybrid
+
+Keep our Factory semantic/control-flow vocabulary and use Duckle for the expensive dataflow/data-movement/preview/lineage layer while retaining direct adapters for dbt/Python/ML where appropriate.
+
+### Required decision process
+
+Codex Tech Lead must run both spikes and write `ADR-FACTORY-EXECUTION-001.md` before a generic lower executor is built.
+
+Stable constraints regardless of result:
 
 ~~~text
 Factory global DAG
@@ -962,13 +968,9 @@ Factory global DAG
     -> publish/demo
 ~~~
 
-The V1 kernel only needs local DAG validation, ready-node scheduling, bounded concurrency, success/failure edges, retry, timeout, cancellation, subprocess isolation, logs and normalized receipts.
+Factory remains local-only. dlt remains ingestion. dbt remains transformation/model DAG. No fake Spark. Kubernetes/k3s, Airflow, Dagster and Meltano are not assumed core.
 
-It does not need distributed workers, remote agents, HA scheduling, Kubernetes executors or a backfill platform.
-
-dlt remains ingestion. dbt remains transformation/model DAG. Airflow/Meltano/Dagster remain external/future adapters rather than Factory core.
-
-Full technical decision is in datapass-vscode-common/handoff/V4_ORCHESTRATION_DECISION.md.
+Full gate specification is in `datapass-vscode-common/handoff/V4_ORCHESTRATION_DECISION.md`.
 
 ---
 
@@ -1235,7 +1237,7 @@ Snapshot is not canonical project authority.
 
 ---
 
-# 26. Cloudiagram role changed
+# 26. Cloudiagram — independent ideas donor, outside the DataPass galaxy
 
 GitLab repo exists and is healthy.
 
@@ -1256,13 +1258,11 @@ Cloudiagram already has:
 - Electron publication;
 - MCP/CLI paths.
 
-Do not throw it away.
+Do not throw it away, but **do not list it as a DataPass V4 galaxy product**.
 
-But it is no longer on the immediate critical path.
+Harvest architecture principles only: canonical-model discipline, stable IDs, provenance/evidence levels, source hints != lineage, review/apply, revision/hash guards, bounded parsers and macro-to-micro drill-down.
 
-Later role:
-
-> consume sanitized semantic/run snapshots and produce polished drill-down/PPTX/PDF.
+Cloudiagram stays independent. A later optional bridge may consume sanitized semantic/run snapshots for PPTX/PDF, but that is not part of the current implementation wave.
 
 ---
 
@@ -1367,13 +1367,11 @@ Do not create duplicate generic Fabric extensions if official/community tools al
 
 ---
 
-## datapass-studio
+## datapass-studio / future DataPass Front
 
-Very small/older repo.
+The current GitHub repo is essentially a README-only placeholder.
 
-Inspect only if a concrete reusable asset is identified.
-
-Do not assume it is the new Factory.
+Decision: leave the ultra-fast Streamlit/Next-like frontend outside the current core galaxy. A future DataPass Front may consume Common Engine/Factory APIs for quick demonstrations, but it must not block V4/Factory.
 
 ---
 
